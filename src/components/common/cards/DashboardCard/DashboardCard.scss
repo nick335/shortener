@@ -1,0 +1,48 @@
+.dahsboard-card {
+  $this: &;
+  box-shadow: 0px 0px 16px 4px rgba(0, 0, 0, 0.10);
+  border-radius: 10px;
+  font-weight: 300;
+
+  @apply bg-ecx-white pt-5 pb-4 px-[14px] lg:p-[30px] font-inter space-y-[25px] lg:space-y-0;
+
+  &__content {
+    @apply flex justify-between text-center;
+
+    .chart-holder {
+      @apply w-[70px] lg:w-[100px] aspect-square relative;
+    }
+  }
+
+  
+  &-figures {
+    @apply
+    grid grid-cols-2 items-center gap-x-5 gap-y-8 pt-6 grow
+    [&>*]:flex [&>*]:flex-col [&>*]:items-center [&>*]:gap-y-1;
+    
+    h6 {
+      @apply font-varela-round font-normal;
+
+      &.urls {
+        @apply text-secondary-red;
+        text-shadow: 0px 5px 10px rgba(128, 37, 7, 0.15);
+      }
+      &.admins {
+        @apply text-third-red;
+        text-shadow: 0px 5px 10px rgba(252, 138, 122, 0.15);
+      }
+      &.clicks {
+        @apply text-ls-green;
+        text-shadow: 0px 5px 10px rgba(0, 178, 154, 0.15);
+      }
+      &.shares {
+        @apply text-third-blue;
+        text-shadow: 0px 5px 10px rgba(98, 89, 205, 0.15);
+      }
+    }
+  }
+
+  .link-container {
+    @apply flex text-third-blue gap-x-[9px] items-center text-[14px] lg:justify-end;
+  }
+}

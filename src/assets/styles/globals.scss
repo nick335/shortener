@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  color: theme('colors.ecx-black');
+  background: theme('colors.ecx-white');
+  font-family: theme('fontFamily.varela-round')
+}
+
+@layer base {
+  h1, .h1 {
+    @apply text-[56px] leading-[61.6px];
+  }
+  h2, .h2 {
+    @apply text-[48px] leading-[52.8px];
+  }
+  h3, .h3 {
+    @apply text-[40px] leading-[44px];
+  }
+  h4, .h4 {
+    @apply text-[32px] leading-[35.2px];
+  }
+  h5, .h5 {
+    @apply text-[24px] leading-[26.4px];
+  }
+  h6, .h6 {
+    @apply text-[20px] leading-[22px];
+  }
+
+  img { @apply select-none }
+}
+
+@layer utilities {
+  .link {
+    @apply cursor-pointer hover:opacity-70 transition-all duration-300;
+
+    &-dart { @apply text-dart }
+  }
+}
