@@ -36,7 +36,7 @@ export default function LandingPage() {
 
         <p className="text-small font-inter">
           <span>Already have an account?</span>&nbsp;
-          <Link href="/login" className="link link-dart">Log In</Link>
+          <Link href="/auth/login" className="link link-dart" shallow>Log In</Link>
         </p>
       </section>
     </main>

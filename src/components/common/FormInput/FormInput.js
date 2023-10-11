@@ -16,7 +16,7 @@ export default function FormInput({
   return (
     <div disabled={disabled} {...props} className={`
       input ${variantClass} border border-ecx-grey font-inter
-      py-2.5 px-3 rounded-[5px]
+      py-2.5 px-3 lg:px-9 rounded-[5px]
       lg:text-[18px] text-ecx-grey font-normal leading-[22.4px] lg:leading-[25.2px]
       grow flex items-center gap-[9px]
       transition-all outline-none hover:brightness-105 
@@ -24,7 +24,7 @@ export default function FormInput({
       <input
         type={inputType}
         placeholder={placeholder || "Username"}
-        className="placeholder:text-ecx-grey grow outline-none cursor-text"
+        className="placeholder:text-ecx-grey grow outline-none cursor-text "
       />
       {
         variant === "password" ? (
