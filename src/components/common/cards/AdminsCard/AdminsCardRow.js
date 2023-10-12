@@ -16,7 +16,7 @@ export default function AdminsCardRow({ name, shortLink, href }) {
       </div>
 
       <button className="hover:brightness-105 transition-all duration-200 rotate-90 text-xs">
-        •••
+        ••
       </button>
     </div>
   )

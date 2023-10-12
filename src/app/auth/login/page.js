@@ -29,8 +29,6 @@ export default function Login(){
         <Modal>
 
        <div className="flex flex-col justify-center items-center gap-6">
-      
-        <LinkClipArt  variant="ruby" className="-rotate-[28deg] -top-[56px] lg:-top-[140px] -left-[57px] lg:-left-[250px] text-[56px] aspect-square lg:text-[200px]"/>
 
         <Logo2/>
 
@@ -42,14 +40,13 @@ export default function Login(){
             <div className="w-[250px] lg:w-[400px] mt-[20px] mb-[2px]">
             <FormInput variant="" placeholder="Password" id="email" type="password" value={password} onChange={handleStateChange} />
             </div>
-           <span><Link href="/auth/login/forgotPassword" className="flex flex-col justify-end items-end text-dart hover:text-underline text-[14px]">Forgot Password?</Link></span>
+           <span><Link href="/auth/login/forgotPassword" className="flex flex-col justify-end items-end text-dart hover:underline hover:brightness-105 transition-all text-[14px]">Forgot Password?</Link></span>
         <Link href="" className="w-full max-w-[300px] lg:max-w-[500px] flex transition-all mt-[35px]" shallow>
            <Button>Log In</Button>
         </Link>
         </div>
 
         </form>
-        <LinkClipArt variant="dart" className="-rotate-[28deg] -top-[40px] lg:-top-[75px] -right-[80px] lg:-right-[350px] text-[56px] lg:text-[200px]"/> 
 
        </div>
        </Modal>

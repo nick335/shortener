@@ -31,8 +31,8 @@ export default function Login(){
 
         <Logo2/>
 
-        <p className="text-[24px] lg:text-[32px">Forgot your password?</p>
-        <p className="text-[18px]">A link will be sent to your email address</p>
+        <p className="text-[24px] lg:text-[32px] whitespace-nowrap">Forgot your password?</p>
+        <p className="text-[14px] lg:text-[18px] whitespace-nowrap">A link will be sent to your email address</p>
 
      <form>
         <div className="flex flex-col gap-4">
