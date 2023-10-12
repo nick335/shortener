@@ -32,7 +32,7 @@ export default function Login(){
 
         <Logo2/>
 
-        <p className="text-[24px] lg:text-[32px]">Log into your account</p>
+        <p className="text-[24px] lg:text-[32px]  whitespace-nowrap">Log into your account</p>
 
      <form>
         <div className="flex flex-col">

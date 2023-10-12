@@ -41,7 +41,7 @@ export default function Login(){
             <div className="w-[250px] lg:w-[400px] ">
             <FormInput variant="" placeholder="Confirm new password" id="password2" type="password" value={password2} onChange={handleStateChange}/>
             </div>
-        <Link href="/" className="w-full max-w-[300px] lg:max-w-[500px] flex transition-all mt-[20p" shallow>
+        <Link href="/auth/login" className="w-full max-w-[300px] lg:max-w-[500px] flex transition-all mt-[20p" shallow>
            <Button>Back to login</Button>
         </Link>
         </div>
