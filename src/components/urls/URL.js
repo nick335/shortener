@@ -3,7 +3,7 @@ import React from 'react'
 import more from '../../../public/images/urls/more.svg'
 import clip from '../../../public/images/urls/clip.svg'
 import profile from '../../../public/images/urls/user-tag.svg'
-import { Link1, ChartCircle, ArrowDown2 } from 'iconsax-react'
+import { Link1, ChartCircle, ArrowDown2, More, Profile } from 'iconsax-react'
 import Image from 'next/image'
 import { useState } from 'react'
 import URLStats from './URLStats'
@@ -32,7 +32,8 @@ export default function URL() {
       <Link1 size={20} className='text-swift -rotate-[50deg]' />
       <h4 className='font-inter text-base font-normal ml-[0.31rem]'>ECX Git</h4>
       <div className='relative ml-auto'>
-       <Image src={more} width={20} height={20} alt='more' onClick={() => toggleModals('options')} className='cursor-pointer' />
+       {/* <Image src={more} width={20} height={20} alt='more' onClick={() => toggleModals('options')} className='cursor-pointer' /> */}
+       <More size={20} onClick={() => toggleModals('options')} className='cursor-pointer' />
        <URLOptions 
          isOpen={modals.options}
        />
