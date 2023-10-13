@@ -1,10 +1,10 @@
 "use client"
 import Link from "next/link";
 import { useState } from "react";
-import Logo2 from "@/components/common/Logo/Logo2";
+import Logo from "@/components/common/Logo/Logo";
 import FormInput from "@/components/common/FormInput/FormInput";
 import Modal from "@/components/layout/Modal/Modal"
-import LinkClipArt from "@/components/common/LinkClipArt/LinkClipArt";
+// import LinkClipArt from "@/components/common/LinkClipArt/LinkClipArt";
 import Button from "@/components/common/Button/Button"
 
 
@@ -30,18 +30,18 @@ export default function Login(){
 
        <div className="flex flex-col justify-center items-center gap-6">
 
-        <Logo2/>
+        <Logo/>
 
         <p className="text-[24px] lg:text-[32px]  whitespace-nowrap">Log into your account</p>
 
-     <form>
+     <form className="w-full max-w-[300px] lg:max-w-[440px]">
         <div className="flex flex-col">
+            <div className="flex flex-col gap-[16px]">
             <FormInput variant="email" placeholder="Email Address" id="email" type="email" value={email} onChange={handleStateChange}/>
-            <div className="w-[250px] lg:w-[400px] mt-[20px] mb-[2px]">
             <FormInput variant="" placeholder="Password" id="email" type="password" value={password} onChange={handleStateChange} />
             </div>
            <span><Link href="/auth/login/forgotPassword" className="flex flex-col justify-end items-end text-dart hover:underline hover:brightness-105 transition-all text-[14px]">Forgot Password?</Link></span>
-        <Link href="" className="w-full max-w-[300px] lg:max-w-[500px] flex transition-all mt-[35px]" shallow>
+        <Link href="" className=" flex transition-all mt-[35px]" shallow>
            <Button>Log In</Button>
         </Link>
         </div>
