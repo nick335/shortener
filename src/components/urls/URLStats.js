@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './urls.module.scss'
 
-export default function URLStats({ isOpen }) {
+export default function URLStats({ isOpen, close }) {
   return (
-    <div className={` ${ isOpen ? 'block z-10 ' : 'hidden' } absolute top-[3rem] z-50 left-0  shadow-md w-full h-fit rounded-[0.625rem] bg-ecx-white pb-5 pt-[0.62rem] font-inter px-[0.94rem] flex flex-col gap-y-5`}>
+    <div className={` ${ isOpen ? 'block' : 'hidden' } absolute top-[3rem] z-10 left-0  shadow-md w-full h-fit rounded-[0.625rem] bg-ecx-white pb-5 pt-[0.62rem] font-inter px-[0.94rem] flex flex-col gap-y-5`} onBlur={() => close('stats')}>
      <div>
       <p className={`${styles.statsQuestion}`}>Total number of clicks so far:</p>
       <h6 className={`${styles.statAns}`}>10</h6>
