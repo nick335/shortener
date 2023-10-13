@@ -39,8 +39,13 @@ module.exports = {
         "large": ["20px", {
           lineHeight: "28px",
         }],
+      },
+      boxShadow:{
+        'urlCard': '0px 2px 16px 0px rgba(0,0,0,0.10)'
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwind-scrollbar")({ nocompatible: true}),
+  ],
 }

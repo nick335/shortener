@@ -1,0 +1,17 @@
+.statsQuestion{
+ @apply text-small font-normal text-ecx-grey;
+}
+.statAns{
+ @apply text-2xl ml-5 leading-[1.65rem] font-varela-round mt-[0.94rem];
+}
+.statAns2{
+ @apply text-large mt-[0.62rem];
+}
+.scrollbar{
+ scrollbar-width: thin;
+ scrollbar-color: red;
+
+ ::-webkit-scrollbar-thumb{
+  background-color: red;
+ }
+}
