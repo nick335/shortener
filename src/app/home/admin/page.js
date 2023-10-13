@@ -1,58 +1,54 @@
 "use client"
-import Image from "next/image";
 import Button from "@/components/common/Button/Button";
-import {User } from "iconsax-react";
-import more from "@/assets/icons/more.svg"
+import { User, ArrowSwapVertical } from "iconsax-react";
+import AdminDataRow from "@/components/admins/AdminDataRow";
+
 
 export default function AdminPage(){
-    const ArrayNumberOfUsers = [1,2,3,4,5,6,7,8,9,10,11]
+    
     return(
         <div>
+
             <div className="flex lg:hidden items-center gap-x-4 mx-auto px-[10px] max-w-[400px] mb-[30px]">
             <Button variant="ruby" icon="people">Invite Admin</Button>
             </div>
 
-            <table className="lg:w-[80%] lg:m-[auto] md:w-[80%] md:m-[auto] text-[10px] lg:text-[16px] md:text-[16px] divide-y-4 divide-slate-400/25  border-spacing-2">
-                <thead className="mb-[20px] space-y-0 rounded-t-lg ">
-                <tr className="bg-[#E1E1E180] rounded-t-lg ">
-                    <td className="p-3">Admin</td>
-                    <td className="p-3"></td>
-                    <td className="p-3 whitespace-nowrap">Date Modified </td>
-                    <td className="p-3"></td>
-                </tr>
-                </thead>
+            {/* @Seun-A you can uncomment this line to test the sticky header out, it doesn't look so good */}
+            {/* <div className="border border-[#E1E1E180] sticky top-0 rounded-tr-lg rounded tl-lg  px-6 py-2 lg:border-none lg:bg-[#E1E1E180] grid grid-cols-4"> */}
+            <div className="border border-[#E1E1E180] rounded-tr-lg rounded tl-lg  px-6 py-2 lg:border-none lg:bg-[#E1E1E180] grid grid-cols-4">
+              <div>Admin</div>
+              <div></div>
+              <div className="whitespace-nowrap flex gap-[5px] flex justify-center items-center">
+                Date Modified 
+              <span>
+                <ArrowSwapVertical className="m-[2px] sm:w-[3px] md:w-[14px] lg:w-[18px]"/>
+              </span>
+              </div>
+              <div></div>
+             </div>
 
-                <tbody className="gap-20 mt-4 rounded-tl-lg rounded-tr-lg">
-                    <tr className="bg-ecx-white rounded-[4px] rounded-l-lg rounded-r-lg ">
-                        <td className="p-3"> 
-                            <button className=" w-[30px] h-[30px] aspect-square rounded-full mt-1 flex items-center justify-center">
-                              <User size="18"/>
-                            </button>
-                        </td>
-                        <td className="p-3 text-dart whitespace-nowrap">Super Admin(You)</td>
-                        <td className="p-3"></td>
-                        <td className="p-3"></td>
-                    </tr>
-                </tbody>
-            
-
-        <tbody className="space-y-0 mt-4 rounded-lg">
-            {ArrayNumberOfUsers.map((number, index) => (
-              <tr key={index} className="bg-ecx-white mb-[10px] divide-y-4 divide-slate-400/25  rounded-l-lg rounded-r-lg">
-                <td className="p-3">
+             <div className="bg-ecx-white grid grid-cols-4 mt-[10px] px-6 py-2">
+                <div> 
                  <button className=" w-[30px] h-[30px] aspect-square rounded-full mt-1 flex items-center justify-center">
-                  <User size="18"/>
+                     <User size="18"/>
                  </button>
-                </td>
-                <td className="p-3">Admin {number}</td>
-                <td className="p-3">September 23, 2023</td>
-                <td className="p-3">
-                    <Image src={more} alt="three--dots"/>
-                </td>
-              </tr>
-            ))}
-        </tbody>
-        </table>
+                </div>
+                <div className="text-dart whitespace-nowrap">Super Admin(You)</div>
+                <div></div>
+                <div></div>
+             </div>
+        
+        <AdminDataRow number={1}/>
+        <AdminDataRow number={2}/>
+        <AdminDataRow number={3}/>
+        <AdminDataRow number={4}/>
+        <AdminDataRow number={5}/>
+        <AdminDataRow number={6}/>
+        <AdminDataRow number={7}/>
+        <AdminDataRow number={8}/>
+        <AdminDataRow number={9}/>
+        <AdminDataRow number={10}/>
+        <AdminDataRow number={11}/>
 
         </div>
     )
