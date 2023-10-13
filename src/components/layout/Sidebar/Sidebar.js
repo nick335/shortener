@@ -1,5 +1,5 @@
 "use client"
-import SidebarLink from "@/components/common/SidebarLink/SidebarLink";
+import SidebarLink from "./SidebarLink/SidebarLink";
 import Link from "next/link";
 
 export default function Sidebar() {

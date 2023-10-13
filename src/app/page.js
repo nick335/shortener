@@ -13,7 +13,7 @@ export default function LandingPage() {
       <LandingNavigation />
 
       <section className="pt-[108px] px-10 flex flex-col items-center text-center">
-        <div className="h4 lg:h4 text-dart relative">
+        <div className="h4 lg:h4 text-dart relative font-varela-round">
           URL Shortener
 
           <LinkClipArt variant="ruby" className="-rotate-[28deg] -top-[56px] lg:-top-[140px] -left-[57px] lg:-left-[250px] text-[56px] aspect-square lg:text-[200px]" />

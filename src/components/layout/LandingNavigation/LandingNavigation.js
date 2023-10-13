@@ -22,7 +22,7 @@ export default function LandingNavigation() {
         </Link>          
       </div>
       
-      <div className="hidden lg:flex gap-[35px] [&>*]:w-[150px]">
+      <div className="hidden lg:flex gap-[35px] [&>*]:w-[150px] [&>*]:flex">
         <Link href="">
           <Button>Sign Up</Button>
         </Link>

@@ -4,15 +4,15 @@ import "./UrlsCard.scss"
 import { Copy, Link1 } from "iconsax-react"
 
 
-export default function UrlsCardRow({ title, shortLink, href }) {
+export default function UrlsCardRow({ name, shortLink, href }) {
   return (
     <div className="urls-card__row flex items-start gap-x-[10px]">
       <div className="pt-px aspect-square w-[21px]">
-        <Link1 size="21" />
+        <Link1 size="20" className="text-swift" />
       </div>
 
       <div className="text-small text-start grow flex flex-col h-full truncate w-max">
-        <p className="truncate w-full">{title}</p>
+        <p className="truncate w-full">{name}</p>
         <Link href={href} className="text-dart truncate">{shortLink}</Link>
       </div>
 

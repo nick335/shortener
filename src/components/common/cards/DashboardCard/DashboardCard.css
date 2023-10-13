@@ -1,0 +1,7 @@
+.dahsboard-card {
+  box-shadow: 0px 0px 16px 4px rgba(0, 0, 0, 0.10);
+  border-radius: 10px;
+  font-weight: 300;
+
+  @apply bg-ecx-white cursor-pointer pt-5 pb-4 px-[14px] lg:p-[30px] font-inter space-y-[25px] lg:space-y-0;
+}

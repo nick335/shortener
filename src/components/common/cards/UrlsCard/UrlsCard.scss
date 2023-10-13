@@ -5,17 +5,4 @@
   font-weight: 300;
 
   @apply bg-ecx-white p-[15px] py-[20px] lg:p-[30px] font-inter lg:space-y-0;
-
-  &__content {
-    @apply flex justify-between text-center;
-
-    .chart-holder {
-      @apply w-[70px] lg:w-[100px] aspect-square relative;
-    }
-  }
-
-
-  .link-container {
-    @apply flex text-third-blue gap-x-[9px] items-center text-[14px];
-  }
 }
