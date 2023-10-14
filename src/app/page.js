@@ -1,10 +1,10 @@
 "use client"
+import Link from "next/link"
 import Image from "next/image"
-import LandingNavigation from "@/components/layout/LandingNavigation/LandingNavigation"
 import Button from "@/components/common/Button/Button"
+import LandingNavigation from "@/components/layout/LandingNavigation/LandingNavigation"
 import LinkClipArt from "@/components/common/LinkClipArt/LinkClipArt"
 import windowImg from "@/assets/icons/landing-window.svg"
-import Link from "next/link"
 
 
 export default function LandingPage() {
@@ -20,7 +20,7 @@ export default function LandingPage() {
           <LinkClipArt variant="swift" className="!opacity-100 -rotate-[120deg] -top-[10px] lg:-top-[40px] -right-[28px] lg:-right-[55px] text-[25px] lg:text-[50px]" />
         </div>
 
-        <p className="font-inter text-normal lg:text-large mt-[30px] mb-[40px] w-[40ch]">
+        <p className="font-inter text-normal lg:text-large mt-[30px] mb-[40px] max-w-[40ch]">
           An efficient service to shorten and customize your lengthy links
         </p>
 
@@ -30,13 +30,13 @@ export default function LandingPage() {
           <LinkClipArt variant="dart" className="-rotate-[28deg] -top-[40px] lg:-top-[75px] -right-[80px] lg:-right-[350px] text-[56px] lg:text-[200px]" />
         </div>
 
-        <Link href="/login" className="w-full max-w-[300px] lg:max-w-[500px] mt-[60px] mb-[45px] flex transition-all">
+        <Link href="login" className="w-full max-w-[300px] lg:max-w-[500px] mt-[60px] mb-[45px] flex transition-all">
           <Button>Sign Up</Button>
         </Link>
 
         <p className="text-small font-inter">
           <span>Already have an account?</span>&nbsp;
-          <Link href="/login" className="link link-dart">Log In</Link>
+          <Link href="login" className="link link-dart" shallow>Log In</Link>
         </p>
       </section>
     </main>

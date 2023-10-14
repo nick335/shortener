@@ -1,37 +1,85 @@
+import "./FormInput.css"
 import { Eye, EyeSlash } from "iconsax-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 export default function FormInput({
   variant = "text", // text || email || password || number
   disabled = false,
-  placeholder = "", ...props
+  placeholder = "",
+  name="",
+  message = "",
+  error=false,
+  ...props
 }) {
+  const [inputState, setInputState] = useState("normal") // normal || active || error
   const [isPasswordVisible, setPasswordVisible] = useState(false)
-  const variantClass = `input-${variant}`
+
+  const togglePasswordVisible = () => setPasswordVisible(!isPasswordVisible)
+
+  const handleClick = () => {
+    if (!error) {
+      setInputState("active")
+    }
+  }
+  
+  const handleBlur = () => {
+    if (!error) {
+      setInputState("normal")
+    }
+  }
+
+  useEffect(() => {
+    if (error) {
+      setInputState("error")
+    } else {
+      setInputState("normal")
+    }
+  }, [error])
+
+  
+  const variantClass = `input--${variant}`
+  const stateClass = `input--${inputState}`
+  const messageClass = `input-message--${inputState}`
   const inputType = variant === "password" && !isPasswordVisible ? 
     "password" : variant === "password" && isPasswordVisible ? 
     "text" : variant
 
+
   return (
-    <div disabled={disabled} {...props} className={`
-      input ${variantClass} border border-ecx-grey font-inter
-      py-2.5 px-3 rounded-[5px]
-      lg:text-[18px] text-ecx-grey font-normal leading-[22.4px] lg:leading-[25.2px]
-      grow flex items-center gap-[9px]
-      transition-all outline-none hover:brightness-105 
-    `}>
+    <div
+      disabled={disabled}
+      className={`input ${variantClass} ${stateClass} ${message ? "mb-8" : ""}`}
+      >
       <input
+        name={name}
         type={inputType}
-        placeholder={placeholder || "Username"}
+        placeholder={placeholder || ""}
         className="placeholder:text-ecx-grey grow outline-none cursor-text"
+        autoComplete={
+          variant === "email" ? "current-email" :
+          variant === "password" ? "current-password" :
+          null
+        }
+        onClick={handleClick}
+        onBlur={handleBlur}
+        {...props}
       />
+
       {
         variant === "password" ? (
-          <button onClick={() => setPasswordVisible(!isPasswordVisible)}>
+          <button type="button" onClick={togglePasswordVisible}>
             {isPasswordVisible ? <EyeSlash size="18" /> : <Eye size="18" />}
           </button>
         ) : null
+      }
+
+      {
+        !message ? null : (
+          <div className={`input-message ${messageClass} absolute top-full left-0 mt-2`}>
+            {message}
+          </div>
+        )
       }
     </div>
   )

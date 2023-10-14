@@ -10,4 +10,9 @@
   &--dart { @apply bg-dart text-ecx-white }
   &--ruby { @apply bg-ruby text-ecx-white }
   &--danger { @apply bg-transparent text-ruby }
+
+  // Disables State
+  &--disabled {
+    @apply opacity-70 brightness-105
+  }
 }

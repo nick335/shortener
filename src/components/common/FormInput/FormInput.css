@@ -1,0 +1,30 @@
+.input {
+  @apply
+  border font-inter relative
+  py-2.5 px-3 rounded-[5px]
+  lg:text-[18px] text-ecx-grey font-normal leading-[22.4px] lg:leading-[25.2px]
+  grow flex items-center gap-[9px]
+  transition-all outline-none hover:brightness-105;
+}
+
+/* Variant Classes */
+.input--normal {
+  @apply border-ecx-grey
+}
+.input--active {
+  @apply border-dart
+}
+.input--error {
+  @apply border-ruby
+}
+
+/* Message Variant Classes */
+.input-message--normal {
+  @apply text-ecx-grey
+}
+.input-message--active {
+  @apply text-dart
+}
+.input-message--error {
+  @apply text-ruby
+}

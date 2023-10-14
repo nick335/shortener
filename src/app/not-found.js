@@ -17,7 +17,7 @@ export default function NotFoundPage() {
       <LandingNavigation />
 
       <div className="pt-20 flex flex-col items-center gap-10">
-        <Image alt="404" src={notFoundSvg} className="w-[300px]" />
+        <Image alt="404" src={notFoundSvg} className="w-[300px]" priority />
 
         <h4>Page Not Found</h4>
 

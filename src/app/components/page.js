@@ -36,6 +36,7 @@ export default function ComponentsPage() {
 
       <DisplayComponent name="Button">
         <Button>Dart (default)</Button>
+        <Button disabled>Disabled</Button>
         <Button variant="ruby">Ruby</Button>
         <Button icon="link">Link</Button>
         <Button icon="people">People</Button>
@@ -44,10 +45,12 @@ export default function ComponentsPage() {
 
       
       <DisplayComponent name="Form Input">
-        <FormInput variant="text" placeholder="Text" />
-        <FormInput variant="email" placeholder="Email" />
-        <FormInput variant="password" placeholder="Password" />
-        <FormInput variant="number" placeholder="Number" />
+        <form className="flex flex-wrap items-center gap-2 grow">
+          <FormInput message="Error" error variant="text" placeholder="Text" />
+          <FormInput message="Normal" variant="email" placeholder="Email" />
+          <FormInput variant="password" placeholder="Password" />
+          <FormInput variant="number" placeholder="Number" />
+        </form>
       </DisplayComponent>
     </div>
   )

@@ -23,10 +23,11 @@ export default function LandingNavigation() {
       </div>
       
       <div className="hidden lg:flex gap-[35px] [&>*]:w-[150px]">
-        <Link href="">
+        <Link href="login">
           <Button>Sign Up</Button>
         </Link>
-        <Link href="">
+
+        <Link href="login">
           <Button variant="ruby">Login</Button>
         </Link>
       </div>

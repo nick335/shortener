@@ -25,13 +25,14 @@ export const metadata = {
   description: "Url Shortener bg Engineering Career Expo",
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, auth }) {
   return (
     <html lang="en">
       <body className={`
         ${varela_round.variable} ${inter.variable} ${poppins.variable} lg:flex lg:flex-col lg:min-h-screen overflow-x-hidden
       `}>
         {children}
+        {auth}
       </body>
     </html>
   )

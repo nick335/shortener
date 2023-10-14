@@ -1,9 +1,6 @@
 import "./DashboardCard.scss"
 import Link from "next/link"
-import Image from "next/image"
 
-import pieChart from "@/assets/icons/pie-super-admin.svg"
-import barChart from "@/assets/icons/bar-super-admin.svg"
 import { Logout } from "iconsax-react"
 import LinkClipArt from "@/components/common/LinkClipArt/LinkClipArt"
 

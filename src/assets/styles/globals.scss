@@ -34,7 +34,7 @@ body {
 
 @layer utilities {
   .link {
-    @apply cursor-pointer hover:opacity-70 transition-all duration-300;
+    @apply cursor-pointer hover:brightness-105 hover:underline hover:opacity-70 transition-all duration-300;
 
     &-dart { @apply text-dart }
   }
