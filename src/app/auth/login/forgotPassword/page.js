@@ -3,11 +3,11 @@ import Link from "next/link";
 import { useState } from "react";
 import Logo from "@/components/common/Logo/Logo";
 import FormInput from "@/components/common/FormInput/FormInput";
-import Modal from "@/components/layout/Modal/Modal"
+// import Modal from "@/components/layout/Modal/Modal"
 import Button from "@/components/common/Button/Button"
 
 
-export default function Login(){
+export default function ForgotPassword({auth}){
 
    
 
@@ -25,7 +25,7 @@ export default function Login(){
 
 
     return(
-        <Modal>
+        // <Modal>
 
        <div className="flex flex-col justify-center items-center gap-6">
 
@@ -37,13 +37,13 @@ export default function Login(){
      <form className="w-full max-w-[300px] lg:max-w-[440px]">
         <div className="flex flex-col gap-4">
             <FormInput variant="email" placeholder="Email Address" id="email" type="email" value={email} onChange={handleStateChange}/>
-        <Link href="/auth/login//forgotPassword/resetPassword" className="w-full max-w-[300px] lg:max-w-[500px] flex transition-all" shallow>
+        <Link href="/?auth=resetpassword" className="w-full max-w-[300px] lg:max-w-[500px] flex transition-all" shallow>
            <Button>Reset Password</Button>
         </Link>
         </div>
 
         </form>
        </div>
-       </Modal>
+    //    </Modal>
     )
 }

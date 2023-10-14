@@ -7,10 +7,8 @@ import Modal from "@/components/layout/Modal/Modal"
 import Button from "@/components/common/Button/Button"
 
 
-export default function Login(){
-
-   
-
+export default function ResetPassword(){
+    
     const[user, setUser] = useState({
         password1: '',
         password2: ''
@@ -37,7 +35,7 @@ export default function Login(){
         <div className="flex flex-col gap-4">
             <FormInput variant="email" placeholder="Enter new password" id="password1" type="email" value={password1} onChange={handleStateChange}/>
             <FormInput variant="" placeholder="Confirm new password" id="password2" type="password" value={password2} onChange={handleStateChange}/>
-        <Link href="/auth/login" className="w-full max-w-[300px] lg:max-w-[500px] flex transition-all mt-[20p" shallow>
+        <Link href="/?auth=login" className="w-full max-w-[300px] lg:max-w-[500px] flex transition-all mt-[20p" shallow>
            <Button>Back to login</Button>
         </Link>
         </div>

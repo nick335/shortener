@@ -1,13 +1,27 @@
 "use client"
 import Image from "next/image"
+import {useRouter} from 'next/navigation'
 import LandingNavigation from "@/components/layout/LandingNavigation/LandingNavigation"
 import Button from "@/components/common/Button/Button"
 import LinkClipArt from "@/components/common/LinkClipArt/LinkClipArt"
 import windowImg from "@/assets/icons/landing-window.svg"
 import Link from "next/link"
+import {useSearchParams} from "next/navigation"
+import Modal from "@/components/layout/Modal/Modal"
+import Login from "@/app/auth/login/page"
+import ForgotPassword from "@/app/auth/login/forgotPassword/page"
+import ResetPassword from "@/app/auth/login/forgotPassword/resetPassword/page"
+
 
 
 export default function LandingPage() {
+const searchParams = useSearchParams();
+
+const auth = searchParams.get('auth')
+const showLoginModal = auth === "login" ? true : false;
+const showForgotPasswordModal = auth === "forgotpassword" ? true : false;
+const showResetPasswordModal = auth === "resetpassword" ? true : false
+
   return (
     <main className="relative">
       <LandingNavigation />
@@ -36,7 +50,10 @@ export default function LandingPage() {
 
         <p className="text-small font-inter">
           <span>Already have an account?</span>&nbsp;
-          <Link href="/auth/login" className="link link-dart" shallow>Log In</Link>
+          <Link href="/?auth=login" className="link link-dart" shallow>Log In</Link>
+          {showLoginModal && <Modal children={<Login/>}/>}
+          {showForgotPasswordModal && <Modal children={<ForgotPassword auth={auth} />}/>}
+          {showResetPasswordModal && <Modal children={<ResetPassword auth={auth} />}/>}
         </p>
       </section>
     </main>
