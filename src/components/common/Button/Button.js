@@ -6,7 +6,10 @@ export default function Button({
   variant = "dart", // dart || ruby || danger
   icon="", // people || link
   disabled = false,
-  children, className="", ...props
+  className = "",
+  hidden = false,
+  children,
+  ...props
 }) {
   const variantClass = `btn--${variant}`
   const disabledClass = disabled ? "btn--disabled" : ""
@@ -14,7 +17,7 @@ export default function Button({
   return (
     <button
       disabled={disabled}
-      className={`btn ${variantClass} ${disabledClass} ${className}`}
+      className={`btn ${variantClass} ${disabledClass} ${className} ${hidden ? "!hidden" : ""}`}
       {...props}
     >
       <span>{children}</span>

@@ -12,9 +12,14 @@ import CreateUrlPopUp from "@/components/common/PopUpModal/modals/CreateUrlPopUp
 import CreateUrlSuccess from "@/components/common/PopUpModal/modals/CreateUrlSuccess";
 import InviteAdminPopUp from "@/components/common/PopUpModal/modals/InviteAdminPopUp";
 import InviteAdminSuccess from "../PopUpModal/modals/InviteAdminSuccess";
+import { usePathname } from "next/navigation";
 
 
 export default function CreateUrl() {
+  const pathname = usePathname()
+  const hideOnAdmins = pathname === '/home/admins'
+  const hideOnUrls = pathname === '/home/urls'
+
   const { longUrl } = useSelector(state => state.createUrl)
   const dispatch = useDispatch()
 
@@ -59,17 +64,19 @@ export default function CreateUrl() {
           Create new URL
         </Button>
       </div>
-
+      
       <div className="flex w-full lg:hidden items-center gap-x-4 mx-auto max-w-[400px]">
         <Button
           icon="link"
           onClick={handleDisplayCreatePopUp}
-        >
+          hidden={hideOnAdmins}
+          >
           Create new URL
         </Button>
         <Button
           variant="ruby"
           icon="people"
+          hidden={hideOnUrls}
           onClick={handleDisplayInviteAdminPopUp}
         >
           Invite Admin

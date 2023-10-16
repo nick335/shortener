@@ -6,8 +6,8 @@ export default function PopUpMenu({ ...props }) {
   const menuLinks = [
     {name: 'Home', href: '/home'},
     {name: 'Dashboard', href: '/home/dashboard'},
-    {name: 'URLs', href: '/urls'},
-    {name: 'Admins', href: '/admins'},
+    {name: 'URLs', href: '/home/urls'},
+    {name: 'Admins', href: '/home/admins'},
   ]
   
   return (
