@@ -20,7 +20,7 @@ export default function UrlsCard() {
 
   return (
     <div className="urls-card w-full bg-ecx-white rounded-[10px] max-w-[450px] lg:max-w-none relative z-30">
-      <LinkClipArt shrink className="-rotate-[28deg] -top-[55px] -left-[48px]  text-[140px] !z-[-1] absolute" variant="dart" />
+      <LinkClipArt className="-rotate-[28deg] -top-[55px] -left-[48px]  text-[140px] !z-[-1] absolute" variant="dart" />
 
       <h6 className="pb-[15px]">URLs</h6>
 

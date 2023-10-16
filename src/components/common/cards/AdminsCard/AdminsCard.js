@@ -11,7 +11,7 @@ import LinkClipArt from "@/components/common/LinkClipArt/LinkClipArt"
 export default function AdminsCard() {
   return (
     <div className="admins-card w-full lg:break-before-column bg-ecx-white rounded-[10px] max-w-[450px] lg:max-w-[350px] grow basis-full relative z-30">
-      <LinkClipArt shrink className="-rotate-[28deg] -top-[95px] -left-[48px]  text-[140px] !z-[-1] absolute" variant="swift" />
+      <LinkClipArt className="-rotate-[28deg] -top-[95px] -left-[48px]  text-[140px] !z-[-1] absolute" variant="swift" />
 
       <h6 className="pb-[15px]">Admins</h6>
 

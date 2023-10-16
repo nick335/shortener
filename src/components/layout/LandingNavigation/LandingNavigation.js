@@ -26,8 +26,7 @@ export default function LandingNavigation() {
         <Link href="login">
           <Button>Sign Up</Button>
         </Link>
-
-        <Link href="login">
+        <Link href="/?auth=login">
           <Button variant="ruby">Login</Button>
         </Link>
       </div>

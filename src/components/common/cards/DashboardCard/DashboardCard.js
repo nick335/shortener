@@ -13,7 +13,7 @@ export default function DashboardCard() {
 
   return (
     <div className="dahsboard-card w-full max-w-[450px] relative z-30">
-      <LinkClipArt shrink className="-rotate-[28deg] -top-[55px] -left-[48px]  text-[140px] !z-[-1] absolute" variant="ruby" />
+      <LinkClipArt className="-rotate-[28deg] -top-[55px] -left-[48px]  text-[140px] !z-[-1] absolute" variant="ruby" />
 
       <div className="dahsboard-card__content">
         <div className="charts-holder space-y-[10px] lg:space-y-[30px]">

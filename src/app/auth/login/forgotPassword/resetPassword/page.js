@@ -1,49 +1,84 @@
 "use client"
 import Link from "next/link";
-import { useState } from "react";
-import Logo from "@/components/common/Logo/Logo";
+import { useEffect, useState } from "react";
 import FormInput from "@/components/common/FormInput/FormInput";
 import Modal from "@/components/layout/Modal/Modal"
 import Button from "@/components/common/Button/Button"
 
 
-export default function Login(){
+export default function ResetPassword() {
+  const [password, setPassword] = useState({
+    password1: "",
+    password2: "",
+    error: false,
+    message: ""
+  })
+  const [isDisabled, setIsDisabled] = useState(true)
 
-   
+  const { password1, password2, error, message } = password
+  const arePasswordsSame = password1 === password2
 
-    const[user, setUser] = useState({
-        password1: '',
-        password2: ''
-    })
+  const handleStateChange = (e) => {
+    const {name, value} = e.target;
+    setPassword({...password, [name]: value})
+  }
 
-    const{password1, password2} = user
-
-    const handleStateChange = (e) =>{
-     const value = e.target.value;
-      setUser({...user, [e.target.id]: value})
+  useEffect(() => {
+    if (!arePasswordsSame) {
+      setPassword(prev => {
+        return {
+          ...prev,
+          error: true,
+          message: "Passwords must be the same"
+        }
+      })
+    } else {
+      setPassword(prev => {
+        return {
+          ...prev,
+          error: false,
+          message: ""
+        }
+      })
     }
+  }, [arePasswordsSame])
+
+  useEffect(() => {
+    if (password2 === "") {
+      setIsDisabled(true)
+    } else {
+      if (error) {
+        setIsDisabled(true)
+      } else {
+        setIsDisabled(false)
+      }
+    }
+  }, [error, password2])
 
 
-    return(
-        <Modal>
+  return (
+    <Modal title="Password reset">
+      <div className="flex flex-col gap-8">
+        <FormInput
+          name="password1"
+          value={password1}
+          placeholder="Enter new password"
+          onChange={handleStateChange}
+        />
 
-       <div className="flex flex-col justify-center items-center gap-6">
+        <FormInput
+          name="password2"
+          value={password2}
+          placeholder="Confirm new password"
+          onChange={handleStateChange}
+          error={error}
+          message={message}
+        />
+      </div>
 
-        <Logo/>
-
-        <p className="text-[24px] lg:text-[32px]">Password Reset</p>
-
-     <form className="w-full max-w-[300px] lg:max-w-[440px]">
-        <div className="flex flex-col gap-4">
-            <FormInput variant="email" placeholder="Enter new password" id="password1" type="email" value={password1} onChange={handleStateChange}/>
-            <FormInput variant="" placeholder="Confirm new password" id="password2" type="password" value={password2} onChange={handleStateChange}/>
-        <Link href="/auth/login" className="w-full max-w-[300px] lg:max-w-[500px] flex transition-all mt-[20p" shallow>
-           <Button>Back to login</Button>
-        </Link>
-        </div>
-
-        </form>
-       </div>
-       </Modal>
-    )
+      <Link passHref href="/?auth=login" className="flex mt-[35px]">
+        <Button disabled={isDisabled}>Back to login</Button>
+      </Link>
+    </Modal>
+  )
 }
