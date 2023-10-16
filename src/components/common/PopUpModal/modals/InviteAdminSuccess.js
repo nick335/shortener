@@ -17,6 +17,10 @@ export default function InviteAdminSuccess() {
     dispatch(hideInviteAdminSuccess())
     dispatch(setAdmin(''))
   }
+  
+  const handleRedict = () => {
+    dispatch(hideInviteAdminSuccess())
+  }
 
 
   return (
@@ -34,7 +38,7 @@ export default function InviteAdminSuccess() {
           <span>Back</span>
         </button>
 
-        <Link href="/home/admins" className="flex gap-2 items-center justify-end text-third-blue link">
+        <Link onClick={handleRedict} href="/home/admins" className="flex gap-2 items-center justify-end text-third-blue link">
           <span>Go to Admins</span>
           <ExportSquare size={15} />
         </Link>

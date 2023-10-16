@@ -58,14 +58,10 @@ export default function LandingPage() {
         <Link href="/?auth=login" className="w-full max-w-[300px] md:max-w-[500px] mt-[60px] mb-[45px] flex transition-all">
           <Button>Log In</Button>
         </Link>
-        
-        <p className="text-small font-inter">
-          <span>Already have an account?</span>&nbsp;
-          <Link href="/?auth=login" className="link link-dart" shallow>Log In</Link>
-          {showLoginModal && <Modal><Login /></Modal>}
-          {showForgotPasswordModal && <Modal><ForgotPassword auth={auth} /></Modal>}
-          {showResetPasswordModal && <Modal><ResetPassword auth={auth} /></Modal>}
-        </p>
+
+        {showLoginModal && <Modal><Login /></Modal>}
+        {showForgotPasswordModal && <Modal><ForgotPassword auth={auth} /></Modal>}
+        {showResetPasswordModal && <Modal><ResetPassword auth={auth} /></Modal>}
       </section>
     </main>
   )

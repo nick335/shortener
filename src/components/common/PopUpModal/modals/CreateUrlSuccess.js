@@ -28,6 +28,9 @@ export default function CreateUrlSuccess() {
     dispatch(changeLongUrl(''))
     dispatch(changeLabel(''))
   }
+  const handleRedirect = () => {
+    dispatch(hideCreateUrlSuccess())
+  }
 
 
   return (
@@ -58,7 +61,7 @@ export default function CreateUrlSuccess() {
           <span>Back</span>
         </button>
 
-        <Link href="/home/urls" className="flex gap-2 items-center justify-end text-third-blue link">
+        <Link onClick={handleRedirect} href="/home/urls" className="flex gap-2 items-center justify-end text-third-blue link">
           <span>Go to URLs</span>
           <ExportSquare size={15} />
         </Link>
