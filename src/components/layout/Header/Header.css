@@ -1,36 +1,11 @@
 .header {
   @apply
   z-20 sticky top-0 bg-white font-inter
-  px-6 pt-[25px] pb-[15px] lg:px-40 lg:pt-10 lg:pb-[30px]
+  px-6 pt-[25px] pb-[15px] lg:px-[100px] lg:pt-10 lg:pb-[30px]
   flex justify-between items-center lg:grid lg:grid-cols-4
   lg:shadow-[0_4px_15px_0_rgba(0,0,0,0.10)]
 }
-.pop-up-menu {
-  @apply p-6 absolute lg:hidden top-full left-0 w-screen h-[calc(100vh-100%)] overflow-hidden bg-white
-  flex flex-col gap-[30px]
-}
-.pop-up-link {
-  @apply flex gap-5 hover:text-dart transition-all cursor-pointer px-[15px]
-}
 
-.pop-up-link-logout {
-  @apply text-ruby hover:text-ruby/80
-}
-
-
-
-.profile {
-  @apply px-[30px] py-[25px] absolute lg:hidden top-full left-0 w-screen h-[calc(100vh-100%)] overflow-hidden bg-white flex flex-col
-}
-
-.profile-link {
-  @apply flex gap-5 hover:text-dart transition-all cursor-pointer
-}
-
-.search-menu {
-  @apply px-[25px] py-6 absolute lg:hidden top-full left-0 w-screen h-[calc(100vh-100%)] overflow-scroll bg-white
-  flex flex-col gap-6
-}
 
 mark {
   @apply text-[#919191] bg-transparent

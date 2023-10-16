@@ -1,5 +1,8 @@
-import "@/assets/styles/globals.scss"
+import "@/styles/globals.scss"
 import { Varela_Round, Inter, Poppins } from "next/font/google"
+import { store } from "@/redux/store"
+import Providers from "@/redux/provider"
+
 
 const varela_round = Varela_Round({
   subsets: ["latin"],
@@ -20,13 +23,20 @@ const poppins = Poppins({
 export const metadata = {
   title: "Url Shortener",
   description: "Url Shortener bg Engineering Career Expo",
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  }
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${varela_round.variable} ${inter.variable} ${poppins.variable}`}>
       <body className="lg:flex lg:flex-col lg:min-h-screen overflow-x-hidden">
-        {children}
+        <Providers store={store}>
+          {children}
+        </Providers>
       </body>
     </html>
   )

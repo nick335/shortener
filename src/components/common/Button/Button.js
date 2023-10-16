@@ -9,11 +9,12 @@ export default function Button({
   children, className="", ...props
 }) {
   const variantClass = `btn--${variant}`
+  const disabledClass = disabled ? `btn--disabled` : ""
 
   return (
     <button
       disabled={disabled}
-      className={`btn ${variantClass} ${className}`}
+      className={`btn ${variantClass} ${disabledClass} ${className}`}
       {...props}
     >
       <span>{children}</span>

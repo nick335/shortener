@@ -1,23 +1,41 @@
-import { ArrowDown2, ArrowUp2 } from "iconsax-react";
+import "./Select.css"
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { ArrowDown2, ArrowUp2, Candle } from "iconsax-react";
 
-export default function Select({ current='', options }) {
+
+export default function Select({
+  variant='admins', // admins || time
+}) {
+  const admins = useSelector(state => state.admins)
+  
+  const options = variant === 'admins' ? (
+   ["Everyone"].concat(admins.map(admin => admin.name))
+  ) : (
+    ["All Time", "This Week", "This Month", "This Year"]
+  )
+  
+  const [currentSelection, setCurrentSelection] = useState(options[0])
   const [isShowDropdown, setShowDropdown] = useState(false)
+  
+  const filteredOptions = options.filter(option => option !== currentSelection)
+  
   const toggleDropdown = () => setShowDropdown(!isShowDropdown)
-  const [currentSelection, setCurrentSelection] = useState(current)
 
   const handleSelect = event => {
     setCurrentSelection(event.target.textContent)
   }
 
-  const filteredOptions = options.filter(option => option !== currentSelection)
+
   return (
     <div
       onClick={toggleDropdown}
-      className="relative select-none min-w-[100px] bg-ecx-white"
+      onMouseLeave={() => setShowDropdown(false)}
+      className="select-container relative select-none min-w-[100px] bg-ecx-white"
     >
-      <div className={`border border-[#E1E1E1] rounded-[5px] flex items-center justify-between gap-[6px] px-[10px] py-0.5 text-small cursor-pointer hover:bg-[#E1E1E1] transition-all ${isShowDropdown ? 'rounded-b-none' : ''} `}>
-        <span className="">{currentSelection}</span>
+      <div className={`select ${isShowDropdown ? 'rounded-b-none' : ''}`}>
+        <span>{currentSelection}</span>
+
         {
           isShowDropdown ? (
             <ArrowUp2 size={15} />
@@ -27,20 +45,25 @@ export default function Select({ current='', options }) {
         }
       </div>
 
-
       {
-        isShowDropdown && filteredOptions.length ? (
-          <div className="absolute left-0 top-full shadow w-full py-1 bg-white gap-1 flex flex-col text-small">
-            {
-              filteredOptions
-              .map((content, index) => (
-                <span
-                  key={index}
-                  onClick={handleSelect}
-                  className="hover:bg-[#E1E1E180] cursor-pointer transition-all px-[10px]"
-                >{content}</span>
-              ))
-            }
+        isShowDropdown ? (
+          <div className="select-dropdown">
+            <span className="select-item text-dart">
+              {currentSelection}
+            </span>
+
+            {filteredOptions.map((content, index) => (
+              <span
+                key={index}
+                onClick={handleSelect}
+                className="select-item"
+              >{content}</span>
+            ))}
+
+            <span className="select-item">
+              <span>Custom</span>
+              <Candle size={15} />
+            </span>
           </div>
         ) : null
       }

@@ -1,13 +1,15 @@
 .btn {
   @apply
-  py-2.5 px-2.5 min-w-[105px] rounded-[5px]
+  py-2.5 px-2.5  rounded-[5px]
   text-[14px] font-normal leading-[19.6px]
   flex items-center justify-center gap-[9px] grow
-  hover:brightness-105 transition-all
+  hover:brightness-105 active:brightness-95 transition-all
   outline-none select-none;
 
   // Variant Classes
   &--dart { @apply bg-dart text-ecx-white }
   &--ruby { @apply bg-ruby text-ecx-white }
-  &--danger { @apply bg-transparent text-ruby }
+  &--danger { @apply bg-transparent text-ruby hover:bg-ecx-grey/[0.05] active:bg-ecx-grey/10 }
+
+  &--disabled { @apply brightness-90 hover:brightness-90 active:brightness-90 }
 }

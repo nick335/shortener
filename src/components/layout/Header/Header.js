@@ -1,22 +1,30 @@
 "use client"
 import "./Header.css"
+import Link from "next/link";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { showInviteAdminPopUp } from "@/app/redux/features/inviteAdmin/inviteAdminSlice";
 import { ArrowLeft2, HambergerMenu, SearchNormal1, User } from "iconsax-react";
 
 import Button from "@/components/common/Button/Button";
 import Logo from "@/components/common/Logo/Logo";
 
-import PopUpMenu from "./PopUpMenu";
-import ProfileMenu from "./ProfileMenu";
-import Searchbar from "./Searchbar";
-import SearchMenu from "./SearchMenu";
-import SearchNavigation from "./SearchNavigation";
-import Link from "next/link";
+import SearchNavigation from "./Menu/SearchMenu/SearchNavigation";
+import SearchMenu from "./Menu/SearchMenu/SearchMenu";
+import PopUpMenu from "./Menu/PopUpMenu/PopUpMenu";
+import ProfileMenu from "./Menu/ProfileMenu/ProfileMenu";
+import Searchbar from "./Menu/SearchMenu/Searchbar";
 
 
 
 export default function Header() {
-  // Bug when I tried to do: const [[state setState], [state, setState], ...] = Array(3).fill(useState(false))
+  const dispatch = useDispatch()
+
+  const handleDisplayInviteAdmin = () => {
+    dispatch(showInviteAdminPopUp())
+  }
+
+  // Bug when I tried to do: const [headerState setHeaderState] = useState({isDisplayPopUp:false, ..., searchField:''})
   const [isDisplayPopUp, setDisplayPopUp] = useState(false)
   const [isDisplayProfile, setDisplayProfile] = useState(false)
   const [isSearchState, setSearchState] = useState(false)
@@ -46,60 +54,88 @@ export default function Header() {
     setSearchState(!isSearchState)
   }
 
-  // Check if any modal is displaying, to handle the Logo
+  // Check if popup or profile is displaying, to handle the Logo
   const isModalDisplaying = isDisplayPopUp || isDisplayProfile
 
-
   return (
-    <header className={`header ${isModalDisplaying ? '!px-[30px]' : ''}`}>
-      {
-        isDisplayPopUp || isDisplayProfile || isSearchState ? (
-          <button onClick={clearAllModals}><ArrowLeft2 size={20} /></button>
-        ) : <Logo />
-      }
+    <header className={`header ${isModalDisplaying ? '!ps-[30px]' : ''}`}>
+      <Link href='/home'>
+        <span className="hidden lg:block">
+          <Logo />
+        </span>
+        
+        <span className="lg:hidden">
+          {
+            isDisplayPopUp || isDisplayProfile || isSearchState ? (
+              <button onClick={clearAllModals}><ArrowLeft2 size={20} /></button>
+            ) : <Logo />
+          }
+        </span>
+      </Link>
       
-      <div className="hidden lg:flex col-span-3 justify-between items-center whitespace-nowrap gap-x-10">
-        <Searchbar />
+
+      {/* Larger screen display */}
+      <div className="hidden lg:flex col-span-3 justify-between items-center whitespace-nowrap gap-x-16">
+        <Searchbar
+          value={searchField}
+          onChange={handleSearchInput}
+          clear={clearSearchInput}
+        />
 
         <div className="flex gap-x-9">
           <div className="row-span-2 bg-[#E1E1E180] w-[40px] aspect-square rounded-[10px] flex items-center justify-center ">
-            <User size="20"  />
+            <User size="20" />
           </div>
 
           <Link href="">
-            <Button variant="ruby" icon="people" className="w-[170px]">Invite Admin</Button>
+            <Button
+              variant="ruby"
+              icon="people"
+              className="w-[170px]"
+              onClick={handleDisplayInviteAdmin}
+            >
+              Invite Admin
+            </Button>
           </Link>
-
         </div>
       </div>
 
-      <div className="lg:hidden flex items-center space-x-[28px]">
+
+      {/* Smaller screen display */}
+      <div className="lg:hidden flex items-center space-x-[28px] [&>*]:cursor-pointer">
         {
           !isSearchState ? (
             <>
               <User size="20" onClick={toggleDisplayProfile} className={`${isDisplayProfile ? "hidden" : ""}`} />
-              <SearchNormal1 onClick={toggleSearchState} size="18" />
-              <HambergerMenu onClick={toggleDisplayPopUp} size="20"  />
+              <SearchNormal1 size="18" onClick={toggleSearchState} />
+              <HambergerMenu size="20" onClick={toggleDisplayPopUp}  />
             </>
           ) : (
             <SearchNavigation
-              toggleSearchState={toggleSearchState} 
-              clearSearchInput={clearSearchInput} 
-              searchField={searchField} 
-              handleSearchInput={handleSearchInput}
+              value={searchField} 
+              onChange={handleSearchInput}
+              clear={clearSearchInput} 
+              hideSearchbar={toggleSearchState} 
             />
           )
         }
       </div>
 
+      {/* Menu Displays */}
       {!isSearchState ? null :
-        <SearchMenu value={searchField} searchField={searchField} />
+        <SearchMenu
+          value={searchField}
+          searchField={searchField}
+          clearModals={clearAllModals}
+        />
       }
+
       {!isDisplayPopUp ? null :
-        <PopUpMenu />
+        <PopUpMenu clearModals={clearAllModals} />
       }
+
       {!isDisplayProfile ? null :
-        <ProfileMenu />
+        <ProfileMenu clearModals={clearAllModals} />
       }
     </header>
   )

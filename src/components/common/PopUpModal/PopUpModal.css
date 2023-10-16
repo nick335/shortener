@@ -1,0 +1,27 @@
+.pop-up-modal-bg {
+  @apply fixed z-20 top-0 left-0 w-full h-screen
+  bg-ecx-grey/50 text-small
+  flex items-center justify-center
+}
+
+.pop-up-modal {
+  @apply w-5/6 max-w-[350px] p-5 flex flex-col gap-5 
+  bg-ecx-white md:bg-[#F8F8F8] rounded-[10px] 
+}
+
+.modal--wide {
+  @apply md:max-w-[780px]
+}
+
+.pop-up-modal_title {
+  @apply text-normal md:hidden
+}
+
+.modal-input {
+  @apply w-full px-2.5 py-1.5 md:px-5 md:py-2.5 rounded-[5px]
+  bg-ecx-grey/10 outline-none placeholder:text-ecx-grey/70
+}
+
+.md-white {
+  @apply md:bg-ecx-white md:shadow-[0_2px_16px_0_rgba(0,0,0,0.10)]
+}

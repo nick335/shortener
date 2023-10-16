@@ -1,26 +1,32 @@
 "use client"
 import SidebarLink from "./SidebarLink/SidebarLink";
-import Link from "next/link";
+
 
 export default function Sidebar() {
+  const sidebarLinks = [
+    {name: 'Home', href: '/home'},
+    {name: 'Dashboard', href: '/home/dashboard'},
+    {name: 'URLs', href: '/home/urls'},
+    {name: 'Admins', href: '/home/admins'},
+  ]
+
+
   return (
-    <nav className={`
-      sidebar w-[calc(((100vw-320px)/4)+160px)] bg-ecx-white 
-      hidden lg:flex flex-col gap-y-[30px]
-      ps-40 pe-10 py-[51px] font-inter
-    `}>
-      <div className="flex flex-col gap-y-[26px]">
-        <SidebarLink>Home</SidebarLink>
-        <SidebarLink>Dashboard</SidebarLink>
-        <SidebarLink>URLs</SidebarLink>
-        <SidebarLink>Admins</SidebarLink>
+    <nav className="sidebar bg-ecx-white hidden lg:block ps-28 pe-5 py-[50px]">
+      <div className="flex flex-col gap-2.5">
+        {
+          sidebarLinks.map(({name, href}) => (
+            <SidebarLink
+              key={href}
+              href={href}
+            >{name}</SidebarLink>
+          ))
+        }
       </div>
 
-      <hr className="border-[#E1E1E1]" />
-      
-      <Link href='' className="text-ruby transition-all duration-200 hover:brightness-125">
-        Log Out
-      </Link>
+      <hr className="border-[#E1E1E1] mt-2.5 mb-2" />
+
+      <SidebarLink logout>Logout</SidebarLink>
     </nav>
   )
 }

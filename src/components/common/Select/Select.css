@@ -1,0 +1,16 @@
+@tailwind components;
+
+@layer components {
+  .select {
+    @apply border border-[#E1E1E1] rounded-[5px] flex items-center justify-between gap-[6px] px-[10px] py-0.5 text-small cursor-pointer hover:bg-[#E1E1E150] transition-all
+  }
+
+  .select-dropdown {
+    @apply
+    absolute left-0 top-[1.6rem] shadow w-full py-2.5 bg-white text-small rounded-[10px] z-10 flex flex-col gap-0.5
+  }
+
+  .select-item {
+    @apply hover:bg-[#E1E1E150] cursor-pointer transition-all px-2.5 py-1 flex items-center gap-[5px] 
+  }
+}

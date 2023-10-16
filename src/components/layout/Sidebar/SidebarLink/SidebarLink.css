@@ -1,0 +1,15 @@
+.sidebar-link {
+  @apply px-[15px] py-5 flex gap-x-5 transition-all duration-200 cursor-pointer select-none
+}
+
+.sidebar-link--active {
+  @apply text-dart
+}
+
+.sidebar-link--default {
+  @apply hover:text-dart/75
+}
+
+.sidebar-link--logout {
+  @apply text-ruby transition-all duration-200 hover:brightness-150
+}
