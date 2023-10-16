@@ -1,5 +1,3 @@
-
-
 export const admins = [
  'Everyone',
  'You',
