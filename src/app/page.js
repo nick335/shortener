@@ -51,9 +51,9 @@ const showResetPasswordModal = auth === "resetpassword" ? true : false
         <p className="text-small font-inter">
           <span>Already have an account?</span>&nbsp;
           <Link href="/?auth=login" className="link link-dart" shallow>Log In</Link>
-          {showLoginModal && <Modal children={<Login/>}/>}
-          {showForgotPasswordModal && <Modal children={<ForgotPassword auth={auth} />}/>}
-          {showResetPasswordModal && <Modal children={<ResetPassword auth={auth} />}/>}
+          {showLoginModal && <Modal><Login /></Modal>}
+          {showForgotPasswordModal && <Modal><ForgotPassword auth={auth} /></Modal>}
+          {showResetPasswordModal && <Modal><ResetPassword auth={auth} /></Modal>}
         </p>
       </section>
     </main>
