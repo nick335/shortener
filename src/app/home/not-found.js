@@ -2,7 +2,7 @@
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import Button from "@/components/common/Button/Button"
-import notFoundSvg from "@/assets/icons/not-found.svg"
+import notFoundSvg from "@/icons/not-found.svg"
 
 
 export default function NotFoundPage() {

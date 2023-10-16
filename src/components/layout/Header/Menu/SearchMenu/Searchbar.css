@@ -1,0 +1,11 @@
+.searchbar-container {
+  @apply bg-[#E1E1E1]/50 text-ecx-grey rounded-[5px]
+  flex items-center gap-1 lg:gap-4
+  grow px-2.5 lg:px-5 py-2 lg:py-3
+}
+
+.search-input {
+  @apply grow outline-none
+  text-small text-ecx-black bg-transparent
+  placeholder:font-light placeholder:text-[#919191] select-none
+}

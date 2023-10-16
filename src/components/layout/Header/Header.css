@@ -1,0 +1,12 @@
+.header {
+  @apply
+  z-20 sticky top-0 bg-white font-inter
+  px-6 pt-[25px] pb-[15px] lg:px-[100px] lg:pt-10 lg:pb-[30px]
+  flex justify-between items-center lg:grid lg:grid-cols-4
+  lg:shadow-[0_4px_15px_0_rgba(0,0,0,0.10)]
+}
+
+
+mark {
+  @apply text-[#919191] bg-transparent
+}

@@ -1,5 +1,5 @@
 import "./Button.scss"
-import { Link1, People } from "iconsax-react";
+import { Link1, Profile2User } from "iconsax-react";
 
 
 export default function Button({
@@ -14,7 +14,7 @@ export default function Button({
   return (
     <button
       disabled={disabled}
-      className={`btn ${variantClass} ${className} ${disabledClass}`}
+      className={`btn ${variantClass} ${disabledClass} ${className}`}
       {...props}
     >
       <span>{children}</span>
@@ -22,8 +22,8 @@ export default function Button({
       {
         icon ? (
           <>
-            {icon ==="people" ? <People size="18" /> : null}
-            {icon ==="link" ? <Link1 size="18" /> : null}
+            {icon ==="people" ? <Profile2User size="18" /> : null}
+            {icon ==="link" ? <Link1 size="18" className="-rotate-[50deg]" /> : null}
           </>
         ) : null
       }
