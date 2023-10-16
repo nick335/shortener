@@ -12,7 +12,7 @@ export default function UserLayout({ children }) {
 
         <div className="overflow-scroll grow p-6 lg:py-10 lg:px-[100px] flex flex-col gap-10">
           <CreateUrl />
-          
+
           {children}
         </div>
       </div>
