@@ -1,27 +1,23 @@
-import {User } from "iconsax-react";
+import { User } from "iconsax-react";
 import AdminToggleOptions from "./AdminToggleOptions";
 
 
-export default function AdminDataRow({number}){
-  return(
-    <>
-    <div className="grid grid-cols-4 bg-ecx-white mt-[10px] px-6 py-2">
-        <div>
-        <button className=" w-[30px] h-[30px] aspect-square rounded-full mt-1 flex items-center justify-center">
-              <User size="18"/>
+export default function AdminDataRow({ number }){
+  return (
+    <div className="flex justify-between lg:grid grid-cols-2 px-[10px] py-2 lg:py-5 lg:ps-[25px] lg:pe-5 bg-ecx-white transition-all">
+      <div className="flex gap-[15px] lg:gap-[30px] items-center">
+        <User size={20} />
+        <span>Admin {number}</span>
+      </div>
+
+      <div className="flex gap-7 items-center lg:justify-between">
+        <span className="hidden lg:block">September 23, 2023</span>
+        <span className="lg:hidden">23-Sept-23</span>
+
+        <button className="cursor-pointer outline-none relative"> 
+          <AdminToggleOptions/>
         </button>
-        </div>
-        <div>
-            <p>Admin {number}</p>
-        </div>
-        <div>
-            <p className="text-center lg:hidden">23-sept-23</p>
-            <span className="text-center hidden lg:block"> 23 September, 2023</span> 
-        </div>
-        <div className="cursor-pointer relative ml-auto"> 
-            <AdminToggleOptions/>
-        </div>
+      </div>
     </div>
-    </>
   )
 }
