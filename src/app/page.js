@@ -12,7 +12,6 @@ import ResetPassword from "@/app/auth/login/forgotPassword/resetPassword/page"
 import Button from "@/components/common/Button/Button"
 import LandingNavigation from "@/components/layout/LandingNavigation/LandingNavigation"
 import LinkClipArt from "@/components/common/LinkClipArt/LinkClipArt"
-import Modal from "@/components/layout/Modal/Modal"
 import windowImg from "@/icons/landing-window.svg"
 
 
@@ -59,9 +58,9 @@ export default function LandingPage() {
           <Button>Log In</Button>
         </Link>
 
-        {showLoginModal && <Modal><Login /></Modal>}
-        {showForgotPasswordModal && <Modal><ForgotPassword auth={auth} /></Modal>}
-        {showResetPasswordModal && <Modal><ResetPassword auth={auth} /></Modal>}
+        {showLoginModal && <Login />}
+        {showForgotPasswordModal && <ForgotPassword />}
+        {showResetPasswordModal && <ResetPassword />}
       </section>
     </main>
   )

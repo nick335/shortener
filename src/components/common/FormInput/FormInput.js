@@ -56,11 +56,7 @@ export default function FormInput({
         type={inputType}
         placeholder={placeholder || ""}
         className="placeholder:text-ecx-grey grow outline-none cursor-text"
-        autoComplete={
-          variant === "email" ? "current-email" :
-          variant === "password" ? "current-password" :
-          null
-        }
+        autoComplete={`current-${variant}`}
         onClick={handleClick}
         onBlur={handleBlur}
         {...props}

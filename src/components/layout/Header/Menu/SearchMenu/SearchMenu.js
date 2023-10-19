@@ -5,23 +5,23 @@ import SearchMenuItem from "./SearchMenuItem"
 
 export default function SearchMenu({ searchField }) {
   const admins = useSelector(state => state.admins)
-  const urlsCreated = useSelector(state => state.urls.urlsCreated)
-
-  const allUsersAndLinks = [...admins]
-    .map(link => {
-      return {variant: 'user', name: link.name}
+  const new_urls = useSelector(state => state.user.data.links)
+      
+  const allAdminsAndLinks = [...new_urls]
+  .map(link => {
+    return {variant: 'link', ...link}
+  })
+  .concat(
+    [...admins].map(admin => {
+      return {variant: 'user', ...admin}
     })
-    .concat(
-      [...urlsCreated].map(user => {
-        return {variant: 'link', name: user.name}
-      })
     )
 
-  
+    
   return (
     <Menu className="search-menu gap-6">
       {
-        allUsersAndLinks
+        allAdminsAndLinks
         .filter(({ name }) => {
           if (searchField) {
             return name.toLocaleLowerCase().includes(searchField.toLocaleLowerCase())

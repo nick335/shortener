@@ -8,7 +8,7 @@ export default function Filters() {
  const [time, setTime] = useState(times[0])
 
   return (
-    <div className='flex items-center gap-x-[0.62rem] mt-[0.94rem]'>
+    <div className='flex items-center gap-x-2.5'>
       <Filter 
        data={admins}
        setData={setAdmin}

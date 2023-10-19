@@ -33,7 +33,7 @@ export const metadata = {
 export default function RootLayout({ children, auth }) {
   return (
     <html lang="en" className={`${varela_round.variable} ${inter.variable} ${poppins.variable}`}>
-      <body className="lg:flex lg:flex-col lg:min-h-screen overflow-x-hidden">
+      <body className="flex flex-col min-h-screen overflow-x-hidden">
         <Providers store={store}>
           {children}
           {auth}

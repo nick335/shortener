@@ -16,7 +16,7 @@ export default function CreateUrlSuccess() {
 
   const handleHideCopy = () => {
     setIsCopied(false)
-    navigator.clipboard.writeText(longUrl)
+    navigator.clipboard.writeText(`ecxurls.com/${label}`)
   }
 
   const handleCopyClick = () => {
@@ -29,6 +29,8 @@ export default function CreateUrlSuccess() {
     dispatch(changeLabel(''))
   }
   const handleRedirect = () => {
+    dispatch(changeLongUrl(''))
+    dispatch(changeLabel(''))
     dispatch(hideCreateUrlSuccess())
   }
 
@@ -41,12 +43,14 @@ export default function CreateUrlSuccess() {
         <span className="text-ecx-grey">{label}</span>
 
         <div className="md-white bg-ecx-grey/10 rounded-[5px] px-2.5 py-1.5 flex gap-2">
-          <span className="grow truncate link link-dart">{longUrl}</span>
+          <span className="grow truncate link link-dart">
+            ecxurls.com/{label}
+          </span>
 
           <div className="relative">
             {
               isCopied ? (
-                <Copied onUnmount={handleHideCopy} visible={isCopied} className="!-top-1.5" />
+                <Copied onUnmount={handleHideCopy} visible={isCopied} className="!-top-1.5"  />
               ) : (
                 <Copy size={17} className="-scale-x-[1] cursor-pointer" onClick={handleCopyClick} />
               )
