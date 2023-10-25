@@ -9,6 +9,7 @@ import {
 import { ClipboardExport, Link1 } from "iconsax-react";
 import Button from "../../Button/Button";
 import PopUpModal from "../PopUpModal";
+import shortenLink from "@/api/shortenLink";
 
 export default function CreateUrlPopUp() {
   const { isDisplayCreatePopUp, longUrl, label } = useSelector(state => state.createUrl)
@@ -21,6 +22,7 @@ export default function CreateUrlPopUp() {
   }
 
   const handleCreate = () => {
+    shortenLink(label, longUrl)
     dispatch(hideCreateUrlPopUp())
     dispatch(showCreateUrlSuccess())
   }

@@ -18,6 +18,7 @@ export default function Button({
     <button
       disabled={disabled}
       className={`btn ${variantClass} ${disabledClass} ${className} ${hidden ? "!hidden" : ""}`}
+      type="button"
       {...props}
     >
       <span>{children}</span>

@@ -11,7 +11,7 @@ export default function AdminsTable() {
 
       {
         Array(12).fill('').map((e, i) => (
-          <AdminDataRow key={e} number={i+1} />
+          <AdminDataRow key={i} number={i+1} />
         ))
       }
     </div>
