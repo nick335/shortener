@@ -1,27 +1,22 @@
 import Link from "next/link";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeLabel, changeLongUrl, hideCreateUrlSuccess } from "@/app/redux/features/createUrl/createUrlSlice";
 
 import { ArrowLeft2, Copy, ExportSquare, } from "iconsax-react";
 import PopUpModal from "../PopUpModal";
 import Copied from "@/components/common/pop-ups/Copied";
+import useCopyToClipboard from "@/hooks/copyToClipboard";
 
 
 export default function CreateUrlSuccess() {
   const { isDisplayCreateSuccess, longUrl, label } = useSelector(state => state.createUrl)
   const dispatch = useDispatch()
+  const { copied, copyText } = useCopyToClipboard()
 
-  const [isCopied, setIsCopied] = useState(false)
 
-  const handleHideCopy = () => {
-    setIsCopied(false)
-    navigator.clipboard.writeText(`ecxurls.com/${label}`)
-  }
+ 
 
-  const handleCopyClick = () => {
-    setIsCopied(true)
-  }
+ 
 
   const handleHideSuccess = () => {
     dispatch(hideCreateUrlSuccess())
@@ -49,10 +44,10 @@ export default function CreateUrlSuccess() {
 
           <div className="relative">
             {
-              isCopied ? (
+              copied ? (
                 <Copied onUnmount={handleHideCopy} visible={isCopied} className="!-top-1.5"  />
               ) : (
-                <Copy size={17} className="-scale-x-[1] cursor-pointer" onClick={handleCopyClick} />
+                <Copy size={17} className="-scale-x-[1] cursor-pointer" onClick={() => copyText(`ecxurls.com/${label}`)} />
               )
             }
           </div>

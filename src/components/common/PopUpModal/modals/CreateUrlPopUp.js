@@ -21,10 +21,15 @@ export default function CreateUrlPopUp() {
     dispatch(changeLabel(''))
   }
 
-  const handleCreate = () => {
-    shortenLink(label, longUrl)
-    dispatch(hideCreateUrlPopUp())
-    dispatch(showCreateUrlSuccess())
+  const handleCreate = async () => {
+    try {
+      await shortenLink(label, longUrl); // Wait for the fetch to complete
+      dispatch(hideCreateUrlPopUp());
+      dispatch(showCreateUrlSuccess());
+    } catch (error) {
+      // Handle the error here if the fetch request fails
+      console.error('Error:', error);
+    }
   }
 
   const handleChangeLongUrl = ({ target }) => {
@@ -80,7 +85,7 @@ export default function CreateUrlPopUp() {
 
         <div className="grid grid-cols-2 gap-2.5">
           <Button variant="danger" onClick={handleCancel}>Cancel</Button>
-          <Button onClick={handleCreate} disabled={!longUrl}>Create</Button>
+          <Button onClick={handleCreate} disabled={!longUrl || !label}>Create</Button>
         </div>
       </div>
     </PopUpModal>

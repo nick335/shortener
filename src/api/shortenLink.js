@@ -1,6 +1,6 @@
 import BEARER_TOKEN from "./token";
 
-export default function shortenLink(label, url) {
+export default async function shortenLink(label, url) {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append("Authorization", `Bearer ${BEARER_TOKEN}`);
@@ -17,8 +17,20 @@ export default function shortenLink(label, url) {
     redirect: 'follow'
   };
   
-  fetch("https://ecxurls.com/api/v1/links/short-links", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+  try {
+    const response = await fetch("https://ecxurls.com/api/v1/links/short-links", requestOptions);
+
+    if (!response.ok) {
+      // If the response status is not in the 2xx range, handle the error
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const result = await response.text();
+    // You can return a result here if needed
+    return result;
+  } catch (error) {
+    // Handle the error and possibly re-throw it
+    console.error('Error:', error);
+    throw error;
+  }
 }

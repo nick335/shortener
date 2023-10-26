@@ -13,7 +13,7 @@ import { showInviteAdminPopUp } from "@/redux/features/inviteAdmin/inviteAdminSl
 
 export default function HomePage() {
   const admins = useSelector(state => state.admins)
-  const urls = useSelector(state => state.urls.urlsCreated)
+  const urls = useSelector(state => state.urlsDemo.urlsCreated)
 
   const dispatch = useDispatch()
 
