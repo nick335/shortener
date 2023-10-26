@@ -6,9 +6,9 @@ export default function DashboardInfoCard({
   variant = '', // urls, admins, clicks, shares 
 }) {
   const admins = useSelector(state => state.admins)
-  const urlsCreated = useSelector(state => state.urls.urlsCreated)
-  const urlClicks = useSelector(state => state.urls.urlClicks)
-  const urlShares = useSelector(state => state.urls.urlShares)
+  const urlsCreated = useSelector(state => state.urlsDemo.urlsCreated)
+  const urlClicks = useSelector(state => state.urlsDemo.urlClicks)
+  const urlShares = useSelector(state => state.urlsDemo.urlShares)
 
   const textColor = 
     variant === "urls" ? "text-dart" : 
