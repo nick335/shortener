@@ -13,11 +13,6 @@ export default function CreateUrlSuccess() {
   const dispatch = useDispatch()
   const { copied, copyText } = useCopyToClipboard()
 
-
- 
-
- 
-
   const handleHideSuccess = () => {
     dispatch(hideCreateUrlSuccess())
     dispatch(changeLongUrl(''))
@@ -45,7 +40,7 @@ export default function CreateUrlSuccess() {
           <div className="relative">
             {
               copied ? (
-                <Copied onUnmount={handleHideCopy} visible={isCopied} className="!-top-1.5"  />
+                <Copied  visible={copied} className="!-top-1.5"  />
               ) : (
                 <Copy size={17} className="-scale-x-[1] cursor-pointer" onClick={() => copyText(`ecxurls.com/${label}`)} />
               )
