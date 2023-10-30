@@ -41,7 +41,7 @@ export default function CreateUrlPopUp() {
   }
 
   return (
-    <PopUpModal visibility={isDisplayCreatePopUp} wide>
+    <PopUpModal visibility={isDisplayCreatePopUp} wide close={handleCancel}>
       <p className="pop-up-modal_title">Create New URL</p>
 
       <div className="md:hidden flex flex-col gap-2.5">

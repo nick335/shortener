@@ -24,7 +24,7 @@ export default function InviteAdminSuccess() {
 
 
   return (
-    <PopUpModal visibility={displayInviteAdminSuccess} className="md:!p-10" wide>
+    <PopUpModal visibility={displayInviteAdminSuccess} className="md:!p-10" wide  close={handleCancel}>
       <p className="text-normal">You successfully sent an invite to:</p>
 
       <p className="flex">
