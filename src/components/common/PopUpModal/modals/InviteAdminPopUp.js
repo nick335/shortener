@@ -28,7 +28,7 @@ export default function InviteAdminPopUp() {
   }
 
   return (
-    <PopUpModal visibility={displayInviteAdminPopUp} className="md:!p-10">
+    <PopUpModal visibility={displayInviteAdminPopUp} className="md:!p-10" close={handleCancel}>
       <p className="pop-up-modal_title">Invite an Admin</p>
 
       <div className="flex flex-col gap-2.5">

@@ -26,7 +26,7 @@ export default function CreateUrlSuccess() {
 
 
   return (
-    <PopUpModal visibility={isDisplayCreateSuccess}>
+    <PopUpModal visibility={isDisplayCreateSuccess} close={handleHideSuccess}>
       <p className="text-normal">Successfully Created!</p>
 
       <div className="flex flex-col gap-2.5">
