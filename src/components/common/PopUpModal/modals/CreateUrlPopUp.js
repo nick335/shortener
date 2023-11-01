@@ -4,7 +4,7 @@ import {
   changeLongUrl,
   changeLabel,
   showCreateUrlSuccess
-} from "@/app/redux/features/createUrl/createUrlSlice"
+} from "@/redux/features/createUrl/createUrlSlice"
 
 import { ClipboardExport, Link1 } from "iconsax-react";
 import Button from "../../Button/Button";

@@ -3,7 +3,7 @@ import "./Header.css"
 import Link from "next/link";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { showInviteAdminPopUp } from "@/app/redux/features/inviteAdmin/inviteAdminSlice";
+import { showInviteAdminPopUp } from "@/redux/features/inviteAdmin/inviteAdminSlice";
 import { ArrowLeft2, HambergerMenu, SearchNormal1, User } from "iconsax-react";
 
 import Button from "@/components/common/Button/Button";

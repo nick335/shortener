@@ -1,4 +1,4 @@
-import { deleteURL } from '@/app/redux/features/urls/urlsSlice'
+import { deleteURL } from '@/redux/features/urls/urlsSlice'
 import useShareButton from '@/hooks/useShare'
 import React from 'react'
 import { useDispatch, } from 'react-redux'

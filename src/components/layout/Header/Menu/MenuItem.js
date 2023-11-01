@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useDispatch } from "react-redux";
-import { LogOut } from '@/app/redux/features/user/userSlice';
+import { LogOut } from '@/redux/features/user/userSlice';
 import { Category2, Clock, Home, Link1, Profile2User, User } from 'iconsax-react'
 
 

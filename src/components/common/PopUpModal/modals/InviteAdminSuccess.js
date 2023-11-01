@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setAdmin,
   hideInviteAdminSuccess,
-} from "@/app/redux/features/inviteAdmin/inviteAdminSlice";
+} from "@/redux/features/inviteAdmin/inviteAdminSlice";
 
 import PopUpModal from "../PopUpModal";
 import { ArrowLeft2, ExportSquare } from "iconsax-react";

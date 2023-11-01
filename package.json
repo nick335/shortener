@@ -11,8 +11,10 @@
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@reduxjs/toolkit": "^1.9.7",
+    "axios": "^1.6.0",
     "bcrypt": "^5.1.1",
     "chart.js": "^4.4.0",
+    "cookies-next": "^4.0.0",
     "iconsax-react": "^0.0.8",
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",

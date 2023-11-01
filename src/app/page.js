@@ -5,9 +5,9 @@ import { useRouter, useSearchParams } from "next/navigation"
 import { useEffect } from "react"
 import { useSelector } from "react-redux";
 
-import ForgotPassword from "@/app/auth/login/forgotPassword/page"
-import Login from "@/app/auth/login/page"
-import ResetPassword from "@/app/auth/login/forgotPassword/resetPassword/page"
+import ForgotPassword from "@/components/auth/login/forgotPassword/page"
+import LoginPage from "@/components/auth/login/page"
+import ResetPassword from "@/components/auth/login/forgotPassword/resetPassword/page"
 
 import Button from "@/components/common/Button/Button"
 import LandingNavigation from "@/components/layout/LandingNavigation/LandingNavigation"
@@ -58,7 +58,7 @@ export default function LandingPage() {
           <Button>Log In</Button>
         </Link>
 
-        {showLoginModal && <Login />}
+        {showLoginModal && <LoginPage />}
         {showForgotPasswordModal && <ForgotPassword />}
         {showResetPasswordModal && <ResetPassword />}
       </section>

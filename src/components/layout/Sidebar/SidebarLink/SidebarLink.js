@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Category2, Home, Link1, User } from "iconsax-react";
 import { useDispatch } from "react-redux";
-import { LogOut } from "@/app/redux/features/user/userSlice";
+import { LogOut } from "@/redux/features/user/userSlice";
 
 
 export default function SidebarLink({

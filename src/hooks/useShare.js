@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setSharing } from "@/app/redux/features/urls/urlsSlice";
+import { setSharing } from "@/redux/features/urls/urlsSlice";
 
 const useShareButton = (link) => {
  const dispatch = useDispatch()

@@ -3,7 +3,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/icons/*": ["./public/icons/*"],
-      "@/redux/*": ["./src/app/redux/*"]
+      "@/redux/*": ["./src/redux/*"]
     }
   }
 }

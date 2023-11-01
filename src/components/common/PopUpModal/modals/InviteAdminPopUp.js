@@ -3,7 +3,7 @@ import {
   setAdmin,
   hideInviteAdminPopUp,
   showInviteAdminSuccess
-} from "@/app/redux/features/inviteAdmin/inviteAdminSlice";
+} from "@/redux/features/inviteAdmin/inviteAdminSlice";
 
 import Button from "@/components/common/Button/Button";
 import PopUpModal from "../PopUpModal";

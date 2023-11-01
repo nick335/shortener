@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   showCreateUrlPopUp,
   changeLongUrl
-} from "@/app/redux/features/createUrl/createUrlSlice";
-import { showInviteAdminPopUp } from "@/app/redux/features/inviteAdmin/inviteAdminSlice";
+} from "@/redux/features/createUrl/createUrlSlice";
+import { showInviteAdminPopUp } from "@/redux/features/inviteAdmin/inviteAdminSlice";
 
 import Button from "../Button/Button";
 import CreateUrlPopUp from "@/components/common/PopUpModal/modals/CreateUrlPopUp";
