@@ -13,6 +13,7 @@ import Button from "@/components/common/Button/Button"
 import LandingNavigation from "@/components/layout/LandingNavigation/LandingNavigation"
 import LinkClipArt from "@/components/common/LinkClipArt/LinkClipArt"
 import windowImg from "@/icons/landing-window.svg"
+import { hasCookie } from "cookies-next"
 
 
 export default function LandingPage() {
@@ -26,10 +27,11 @@ export default function LandingPage() {
   const isLoggedIn = useSelector(state => state.user.isLoggedIn)
 
   useEffect(() => {
-    if (isLoggedIn) {
+    const userTokenExists = hasCookie('userToken')
+    if (userTokenExists) {
       router.push('/home')
     }
-  })
+  }, [])
 
 
   return (

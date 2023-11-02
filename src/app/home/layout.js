@@ -1,8 +1,10 @@
+'use client'
+import withAuth from "@/components/auth/WithAuth";
 import CreateUrl from "@/components/common/CreateUrl/CreateUrl";
 import Header from "@/components/layout/Header/Header";
 import Sidebar from "@/components/layout/Sidebar/Sidebar";
 
-export default function UserLayout({ children }) {
+function UserLayout({ children }) {
   return (
     <main className="grow flex flex-col">
       <Header />
@@ -19,3 +21,5 @@ export default function UserLayout({ children }) {
     </main>
   )
 }
+
+export default withAuth(UserLayout)

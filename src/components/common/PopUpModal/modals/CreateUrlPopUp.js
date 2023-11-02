@@ -10,10 +10,17 @@ import { ClipboardExport, Link1 } from "iconsax-react";
 import Button from "../../Button/Button";
 import PopUpModal from "../PopUpModal";
 import shortenLink from "@/api/shortenLink";
+import { useState } from "react";
+import { Icon } from "@iconify/react";
 
 export default function CreateUrlPopUp() {
   const { isDisplayCreatePopUp, longUrl, label } = useSelector(state => state.createUrl)
   const dispatch = useDispatch()
+  const [create, setCreate] = useState({
+    isLoading: false,
+    Error: false,
+    ErrorMessage: '',
+  })
 
   const handleCancel = () => {
     dispatch(hideCreateUrlPopUp())
@@ -22,13 +29,28 @@ export default function CreateUrlPopUp() {
   }
 
   const handleCreate = async () => {
+    setCreate({
+      ...create,
+      isLoading: true,
+      Error: false,
+      ErrorMessage: ''
+    })
     try {
       await shortenLink(label, longUrl); // Wait for the fetch to complete
       dispatch(hideCreateUrlPopUp());
       dispatch(showCreateUrlSuccess());
+      setCreate({
+        ...create,
+        isLoading: false,
+      })
     } catch (error) {
       // Handle the error here if the fetch request fails
-      console.error('Error:', error);
+      console.log('Error:', error);
+      setCreate({
+        ...create,
+        isLoading: false,
+        Error: true,
+        })
     }
   }
 
@@ -85,7 +107,11 @@ export default function CreateUrlPopUp() {
 
         <div className="grid grid-cols-2 gap-2.5">
           <Button variant="danger" onClick={handleCancel}>Cancel</Button>
-          <Button onClick={handleCreate} disabled={!longUrl || !label}>Create</Button>
+          <Button onClick={handleCreate} disabled={!longUrl || !label}>
+            { create.isLoading ? (
+              <Icon icon="line-md:loading-loop" className="text-xl" />
+            ) : "Create" }
+          </Button>
         </div>
       </div>
     </PopUpModal>

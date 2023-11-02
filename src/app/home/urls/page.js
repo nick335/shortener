@@ -7,6 +7,7 @@ import { setURLS } from '@/redux/features/urls/urlsSlice'
 import UrlsSection from '@/components/urls/UrlsSection'
 import useSWR from 'swr'
 import fetcher from '@/hooks/useFetcher'
+import { Icon } from '@iconify/react'
 
 
 export default function URLSPage() {
@@ -19,8 +20,6 @@ const { AllLinks } = useSelector((state) => state.urls)
         revalidateOnFocus: false,
         refreshInterval: 3000,
     })
-    // // reversing data since newly added data
-    // const reverseData = 
     if(data !== AllLinks){
         dispatch(setURLS(data))
     }
@@ -29,7 +28,7 @@ const { AllLinks } = useSelector((state) => state.urls)
     <main className='flex flex-col grow min-h-[300px]'>
       <h3 className='text-xl leading-[1.375rem] text-ecx-grey mt-[1.56rem] lg:hidden'>URLs</h3>
        <Filters AllLinks={AllLinks}/>
-      { isLoading ? <p className={`mt-2 ${styles.animatedEllipsis}`}>loading</p> : <UrlsSection />}
+      { isLoading ? <div className='flex justify-center mt-6'><Icon icon="line-md:loading-loop" className='text-5xl' /></div> : <UrlsSection />}
     </main>
   )
 }

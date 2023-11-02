@@ -7,7 +7,6 @@ export const userLogin = async (username, password) => {
          username,
          password
     })
-    console.log(response)
     if (response && response.data && response.data.message === "Login successful.") {
       const { data } = response.data;
       const { user, tokens } = data;
