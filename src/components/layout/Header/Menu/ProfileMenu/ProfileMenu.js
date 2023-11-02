@@ -10,7 +10,7 @@ export default function ProfileMenu({ ...props }) {
     {name: 'Invite History', href:''},
   ]
   
-  const user = useSelector(state => state.user.data.user)
+  const user = useSelector(state => state.user.userDetails)
   const { username, role } = user
 
 

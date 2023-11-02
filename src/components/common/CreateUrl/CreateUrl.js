@@ -21,6 +21,7 @@ export default function CreateUrl() {
   const hideOnUrls = pathname === '/home/urls'
 
   const { longUrl } = useSelector(state => state.createUrl)
+  const role = useSelector(state => state.user.userDetails.role)
   const dispatch = useDispatch()
 
   const handleLongUrl = ({ target }) => {
@@ -73,14 +74,14 @@ export default function CreateUrl() {
           >
           Create new URL
         </Button>
-        <Button
+        { role === 'SUPER_ADMIN' && <Button
           variant="ruby"
           icon="people"
           hidden={hideOnUrls}
           onClick={handleDisplayInviteAdminPopUp}
         >
           Invite Admin
-        </Button>
+        </Button>}
       </div>
 
       <CreateUrlPopUp />

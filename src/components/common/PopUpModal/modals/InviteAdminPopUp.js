@@ -7,9 +7,15 @@ import {
 
 import Button from "@/components/common/Button/Button";
 import PopUpModal from "../PopUpModal";
-
+import { useState } from "react";
+import { Icon } from "@iconify/react";
 
 export default function InviteAdminPopUp() {
+  const [invite, setinvite] = useState({
+    isLoading: false,
+    Error: false,
+    ErrorMessage: '',
+  })
   const { admin, displayInviteAdminPopUp } = useSelector(state => state.inviteAdmin)
   const dispatch = useDispatch()
 
@@ -48,7 +54,11 @@ export default function InviteAdminPopUp() {
 
       <div className="grid grid-cols-2 gap-2.5">
         <Button variant="danger" onClick={handleCancel}>Cancel</Button>
-        <Button onClick={handleCreate} disabled={!admin}>Invite</Button>
+        <Button onClick={handleCreate} disabled={!admin}>
+        { invite.isLoading ? (
+              <Icon icon="line-md:loading-loop" className="text-xl" />
+            ) : "Invite" }
+        </Button>
       </div>
     </PopUpModal>
   )

@@ -13,6 +13,7 @@ import { showInviteAdminPopUp } from "@/redux/features/inviteAdmin/inviteAdminSl
 export default function HomePage() {
   const admins = useSelector(state => state.admins)
   const urls = useSelector(state => state.urlsDemo.urlsCreated)
+  const role = useSelector(state => state.user.userDetails.role)
 
   const dispatch = useDispatch()
 
@@ -61,7 +62,7 @@ export default function HomePage() {
       </HomeCard>
 
 
-      <HomeCard goTo="Admins" clipArtVariant="ruby">
+      { role !== 'SUPER_ADMIN' && <HomeCard goTo="Admins" clipArtVariant="ruby">
         <div className="flex flex-col justify-between text-center gap-[15px]">
           {
             [...admins]
@@ -78,7 +79,7 @@ export default function HomePage() {
         <Button onClick={handleDisplayInviteAdminPopUp} variant="ruby" icon="people" className="w-full my-[25px] lg:!mt-[35px] lg:!mb-[25px]">
           Invite Admin
         </Button>
-      </HomeCard>
+      </HomeCard>}
     </div>
   )
 }

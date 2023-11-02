@@ -14,9 +14,9 @@ import LandingNavigation from "@/components/layout/LandingNavigation/LandingNavi
 import LinkClipArt from "@/components/common/LinkClipArt/LinkClipArt"
 import windowImg from "@/icons/landing-window.svg"
 import { hasCookie } from "cookies-next"
+import LandingPageCheck from "@/components/auth/WithLandingPgeAuth"
 
-
-export default function LandingPage() {
+ function LandingPage() {
   const searchParams = useSearchParams();
 
   const auth = searchParams.get('auth')
@@ -67,3 +67,5 @@ export default function LandingPage() {
     </main>
   )
 }
+
+export default LandingPageCheck(LandingPage)

@@ -22,4 +22,4 @@ function UserLayout({ children }) {
   )
 }
 
-export default withAuth(UserLayout)
+export default withAuth(UserLayout);
