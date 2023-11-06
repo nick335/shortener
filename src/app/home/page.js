@@ -62,7 +62,7 @@ export default function HomePage() {
       </HomeCard>
 
 
-      { role !== 'SUPER_ADMIN' && <HomeCard goTo="Admins" clipArtVariant="ruby">
+      { role === 'SUPER_ADMIN' && <HomeCard goTo="Admins" clipArtVariant="ruby">
         <div className="flex flex-col justify-between text-center gap-[15px]">
           {
             [...admins]

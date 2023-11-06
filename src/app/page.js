@@ -26,13 +26,6 @@ import LandingPageCheck from "@/components/auth/WithLandingPgeAuth"
   const router = useRouter()
   const isLoggedIn = useSelector(state => state.user.isLoggedIn)
 
-  useEffect(() => {
-    const userTokenExists = hasCookie('userToken')
-    if (userTokenExists) {
-      router.push('/home')
-    }
-  }, [])
-
 
   return (
     <main className="relative">

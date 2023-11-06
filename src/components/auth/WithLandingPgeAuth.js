@@ -7,7 +7,7 @@ import {  hasCookie } from 'cookies-next'
 export default function LandingPageCheck(WrappedComponent){
  return function LandingPageCheck(props){
   const [ authorized, setAuthorized] = useState(true)
-  const userToken = hasCookie()
+  const userToken = hasCookie('userToken')
 
   useEffect(() => {
    if(userToken){

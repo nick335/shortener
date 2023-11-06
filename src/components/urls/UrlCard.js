@@ -44,6 +44,7 @@ export default function UrlCard({ data }) {
             isOpen={modals.options}
             id={data.id}
             link={data.shortUrl}
+            close={toggleModals}
           />
         </div>
       </div>
