@@ -2,52 +2,41 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   admin: '',
+  role: '',
+  username: '',
   displayInviteAdminPopUp: false,
   displayInviteAdminSuccess: false,
 }
 
 
 export const inviteAdminSlice = createSlice({
-  name: 'createUrl',
+  name: 'inviteAdmin',
   initialState,
   reducers: {
     inviteAdmin: (state, action) => {
-      return {
-        ...state,
-        admin: action.payload
-      }
+      state.admin = action.payload
     },
     setAdmin: (state, action) => {
-      return {
-        ...state,
-        admin: action.payload
-      }
+      state.admin = action.payload;
     },
-
+    setRole: (state, action) => {
+      state.role = action.payload;
+    },
+    setUsername: (state, action) => {
+       state.username = action.payload;
+    },
     showInviteAdminPopUp: (state) => {
-      return {
-        ...state,
-        displayInviteAdminPopUp: true
-      }
+        state.displayInviteAdminPopUp = true
     },
     hideInviteAdminPopUp: (state) => {
-      return {
-        ...state,
-        displayInviteAdminPopUp: false
-      }
+        state.displayInviteAdminPopUp = false
     },
 
     showInviteAdminSuccess: (state) => {
-      return {
-        ...state,
-        displayInviteAdminSuccess: true
-      }
+        state.displayInviteAdminSuccess = true
     },
     hideInviteAdminSuccess: (state) => {
-      return {
-        ...state,
-        displayInviteAdminSuccess: false
-      }
+        state.displayInviteAdminSuccess = false
     }
   }
 })
@@ -55,6 +44,8 @@ export const inviteAdminSlice = createSlice({
 export const {
   inviteAdmin,
   setAdmin,
+  setRole,
+  setUsername,
   showInviteAdminPopUp,
   hideInviteAdminPopUp,
   showInviteAdminSuccess,
