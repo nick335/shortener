@@ -65,8 +65,8 @@ export default function LoginPage(){
         path: '/',
         secure: true
       })
-      setUser({...user, loading: false})
       router.push("/home")
+      setUser({...user, loading: false})
     }else{
       setUser({...user, loading:false, error: true, errorMessage: response.error })
       console.log(response)
