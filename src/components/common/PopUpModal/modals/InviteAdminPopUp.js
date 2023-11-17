@@ -73,8 +73,8 @@ const {isLoading, error, errorMessage, isDisabled} = invite
         />
         <select className="modal-input md-white" value={role} onChange={handleRoleChange}>
         <option value="" disabled>role</option>
-        <option value="volvo">Super Admin</option>
-         <option value="saab">Admin</option>
+        <option value="s-admin">Super Admin</option>
+         <option value="admin">Admin</option>
         </select>
         <input
           className="modal-input md-white"
