@@ -66,7 +66,6 @@ export default function InviteAdminPopUp() {
           <span className="text-ecx-grey/70">Email Address</span>
           <span className="link link-dart">Copy invite link</span>
         </div>
-
         <input
           className="modal-input md-white"
           type="text"
