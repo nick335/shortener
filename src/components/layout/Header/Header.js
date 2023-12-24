@@ -88,7 +88,7 @@ export default function Header() {
             <User size="20" />
           </div>
 
-          { role !== 'SUPER_ADMIN' && <Link href="">
+          { role === 'SUPER_ADMIN' && <Link href="">
             <Button
               variant="ruby"
               icon="people"

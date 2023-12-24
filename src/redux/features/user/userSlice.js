@@ -124,8 +124,6 @@ export const userSlice = createSlice({
       state.refreshTokenExpiration = action.payload.refreshTokenExpiration
     },
     LogOut: (state) => {
-      // const router = useRouter()
-      // router.push('/')
       state.isLoggedIn = false
       state.userDetails.name = ""
       state.userDetails.role = ""

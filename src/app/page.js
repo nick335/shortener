@@ -15,6 +15,7 @@ import LinkClipArt from "@/components/common/LinkClipArt/LinkClipArt"
 import windowImg from "@/icons/landing-window.svg"
 import { hasCookie } from "cookies-next"
 import LandingPageCheck from "@/components/auth/WithLandingPgeAuth"
+import { ToastContainer } from "react-toastify"
 
  function LandingPage() {
   const searchParams = useSearchParams();

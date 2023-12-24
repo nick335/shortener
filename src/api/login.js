@@ -25,10 +25,10 @@ export const userLogin = async (username, password) => {
     } 
     // no need for the else if and else statement, catch handles errors that occur during the API request or if an error response is received.
      }catch(error){
-        // console.error(error.response.data.error)
+        console.log(error)
         return { 
           success: false,
-          error: error.response ? error.response.data.error : "An error occurred"
+          error: error.response ? error.response.data.error : "Network error"
         }
 
      }

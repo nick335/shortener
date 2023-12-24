@@ -25,10 +25,14 @@ export default function Modal({
     })
   })
 
+  const stopPropagation = (e) => {
+    e.stopPropagation()
+  }
+
 
   return (
-    <div className="modal-bg fixed inset-0 flex justify-center items-center z-30 bg-ecx-grey/50">
-      <div className="modal relative w-[90%] h-[65%] lg:h-[75%] max-w-[390px] lg:max-w-[670px] max-h-[520px] lg:max-h-[670px] px-6 py-8 bg-white rounded-[24px] flex flex-col items-center gap-[36px] overflow-hidden">
+    <div className="modal-bg fixed inset-0 flex justify-center items-center z-30 bg-ecx-grey/50" onClick={closeModal}>
+      <div className="modal relative w-[90%] h-[65%] lg:h-[75%] max-w-[390px] lg:max-w-[670px] max-h-[520px] lg:max-h-[670px] px-6 py-8 bg-white rounded-[24px] flex flex-col items-center gap-[36px] overflow-y-auto lg:overflow-y-hidden overflow-x-hidden" onClick={stopPropagation}>
         <LinkClipArt size={96} className="-top-4 -left-3 -rotate-[28deg]" variant="swift" />
         <LinkClipArt size={96} className="-bottom-4 -right-4 -rotate-[28deg]" />
 

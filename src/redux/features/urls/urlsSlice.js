@@ -36,8 +36,8 @@ export const urlsSlice = createSlice({
     //  const period = action.payload.period
     //  const who = action.payload.who
     // if(period !== 'All time' && who !=='Everyone'){
-    //   const intialFilter = filterData(state.AllLinks, period)
-    //   const finalFilter = useFilterArrayByUserName(intialFilter, who)
+    //   const initialFilter = filterData(state.AllLinks, period)
+    //   const finalFilter = useFilterArrayByUserName(initialFilter, who)
       
     //   state.DisplayLinks = finalFilter
     // }else if(period === 'All time' && who !== 'Everyone'){

@@ -1,6 +1,5 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import styles from '@/components/urls/urls.module.scss'
 import Filters from '@/components/urls/Filters'
 import { useDispatch, useSelector } from 'react-redux'
 import { setURLS } from '@/redux/features/urls/urlsSlice'
@@ -12,17 +11,16 @@ import { Icon } from '@iconify/react'
 
 export default function URLSPage() {
   const dispatch = useDispatch()
-const { AllLinks } = useSelector((state) => state.urls)
-
-
-
-    const { data, error, isLoading } = useSWR('https://ecx-shortener-api-0ab392f6811d.herokuapp.com/api/v1/links/short-links', fetcher, {
+  const { AllLinks } = useSelector((state) => state.urls)
+  const { data, error, isLoading } = useSWR('https://ecx-shortener-api-0ab392f6811d.herokuapp.com/api/v1/links/short-links', fetcher, {
         revalidateOnFocus: false,
         refreshInterval: 3000,
     })
-    if(data !== AllLinks){
+    useEffect(() => {
+      if( data && data !== AllLinks){
         dispatch(setURLS(data))
-    }
+      }
+    }, [data])
     if(error) return <h3>Error: Something went Wrong Refresh</h3>
   return (
     <main className='flex flex-col grow min-h-[300px]'>

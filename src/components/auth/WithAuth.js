@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Login } from '@/redux/features/user/userSlice'
 
 
-export default function withAuth(WrappedComponent){
- return function withAuth(props){
+export default function WithAuth(WrappedComponent){
+ return function WithAuth(props){
   const pathname = usePathname()
   const isLoggedIn = useSelector(state => state.user.isLoggedIn)
   const role = useSelector(state => state.user.userDetails.role)  

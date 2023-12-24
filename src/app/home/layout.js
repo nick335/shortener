@@ -1,8 +1,10 @@
 'use client'
-import withAuth from "@/components/auth/WithAuth";
+import WithAuth from "@/components/auth/WithAuth";
 import CreateUrl from "@/components/common/CreateUrl/CreateUrl";
 import Header from "@/components/layout/Header/Header";
 import Sidebar from "@/components/layout/Sidebar/Sidebar";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function UserLayout({ children }) {
   return (
@@ -18,8 +20,9 @@ function UserLayout({ children }) {
           {children}
         </div>
       </div>
+      <ToastContainer />
     </main>
   )
 }
 
-export default withAuth(UserLayout);
+export default WithAuth(UserLayout);

@@ -30,7 +30,7 @@ export default function CreateUrl() {
 
 
   const handleDisplayCreatePopUp = () => {
-    dispatch(showCreateUrlPopUp())
+    dispatch(showCreateUrlPopUp('CREATE'))
   }
 
   const handleDisplayInviteAdminPopUp = () => {

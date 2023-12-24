@@ -8,6 +8,7 @@ import HomeCard from "@/components/common/cards/HomeCard/HomeCard";
 import UrlRow from "@/components/common/cards/HomeCard/card-rows/UrlRow";
 import { showCreateUrlPopUp } from "@/redux/features/createUrl/createUrlSlice";
 import { showInviteAdminPopUp } from "@/redux/features/inviteAdmin/inviteAdminSlice";
+import UrlsHomeCard from "@/components/home/UrlsHomeCard";
 
 
 export default function HomePage() {
@@ -18,7 +19,7 @@ export default function HomePage() {
   const dispatch = useDispatch()
 
   const handleDisplayCreatePopUp = () => {
-    dispatch(showCreateUrlPopUp())
+    dispatch(showCreateUrlPopUp('CREATE'))
   }
 
   const handleDisplayInviteAdminPopUp = () => {
@@ -37,24 +38,7 @@ export default function HomePage() {
       </HomeCard>
 
       <HomeCard clipArtVariant="swift" goTo="URLs" className="lg:order-1">
-        <div className="flex flex-col gap-5">
-          {
-            [...urls]
-            .sort((a, b) => {
-              if (a.name < b.name) {
-                return -1;
-              }
-              if (a.name > b.name) {
-                return 1;
-              }
-              return 0;
-            })
-            .slice(0, 3)
-            .map(({...props}, index) => (
-              <UrlRow key={index} {...props} />
-            ))
-          }
-        </div>
+        <UrlsHomeCard />      
 
         <Button icon="link" onClick={handleDisplayCreatePopUp}>
           Create new URL

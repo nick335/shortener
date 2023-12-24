@@ -1,54 +1,43 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
+  Action: '',
+  editId: '',
   longUrl: '',
   label: '',
   isDisplayCreatePopUp: false,
   isDisplayCreateSuccess: false,
 }
 
-
+// creating n action state to determine whether we are creating or editing
 export const createUrlSlice = createSlice({
   name: 'createUrl',
   initialState,
   reducers: {
-    showCreateUrlPopUp: (state) => {
-      return {
-        ...state,
-        isDisplayCreatePopUp: true
-      }
+    showCreateUrlPopUp: (state, action) => {
+      const Action = action.payload
+      state.isDisplayCreatePopUp = true
+      state.Action = Action
     },
     hideCreateUrlPopUp: (state) => {
-      return {
-        ...state,
-        isDisplayCreatePopUp: false
-      }
+      state.isDisplayCreatePopUp = false
     },
 
     showCreateUrlSuccess: (state) => {
-      return {
-        ...state,
-        isDisplayCreateSuccess: true
-      }
+      state.isDisplayCreateSuccess = true
     },
     hideCreateUrlSuccess: (state) => {
-      return {
-        ...state,
-        isDisplayCreateSuccess: false
-      }
+      state.isDisplayCreateSuccess = false
     },
 
     changeLongUrl: (state, action) => {
-      return {
-        ...state,
-        longUrl: action.payload
-      }
+      state.longUrl = action.payload
     },
     changeLabel: (state, action) => {
-      return {
-        ...state,
-        label: action.payload
-      }
+      state.label = action.payload
+    },
+    setEditID: (state, action) => {
+      state.editId = action.payload
     }
   },
 })
@@ -59,7 +48,8 @@ export const {
   showCreateUrlSuccess,
   hideCreateUrlSuccess,
   changeLongUrl,
-  changeLabel 
+  changeLabel,
+  setEditID 
 } = createUrlSlice.actions
 
 export default createUrlSlice.reducer

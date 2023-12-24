@@ -1,7 +1,8 @@
 import getAccessToken from "./getAccessToken";
+import {toast } from 'react-toastify'
+import axios from "axios";
 
 export default async function shortenLink(label, url) {
-  console.log('working')
   const Token = await getAccessToken()
 
   if(Token){
@@ -12,21 +13,28 @@ export default async function shortenLink(label, url) {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${Token}`,
       },
-      body: JSON.stringify({
-        name: label,
-        originalUrl: url,
-      }),
     };
 
-    const response = await fetch('https://ecxurls.com/api/v1/links/short-links', requestOptions);
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    return await response.text();
+    const response = await axios.post('https://ecxurls.com/api/v1/links/short-links', {
+      name: label,
+      originalUrl: url,
+    }, requestOptions);
+   
+    return {
+      success: true
+    };
     } catch (error) {
-      throw new Error(`Failed to shorten the link: ${error.message}`);
+      const message = error.response ? error.response.data.error : 'something went wrong try again'
+       toast.error( message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     } 
   }
   

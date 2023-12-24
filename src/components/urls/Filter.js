@@ -25,6 +25,6 @@ export default function Filter({ data, setData, selectedData }) {
         }
       </Listbox.Options>
     </Listbox>
-  </div>
+    </div>
   )
 }

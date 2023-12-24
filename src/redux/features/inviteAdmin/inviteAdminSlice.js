@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   admin: '',
-  role: '',
+  role: 'ADMIN',
   username: '',
   displayInviteAdminPopUp: false,
   displayInviteAdminSuccess: false,

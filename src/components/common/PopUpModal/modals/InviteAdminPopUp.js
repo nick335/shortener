@@ -11,47 +11,50 @@ import Button from "@/components/common/Button/Button";
 import PopUpModal from "../PopUpModal";
 import { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
+import RoleSelect from "../../Select/RoleSelect";
+import sendAdminInvitation from "@/api/sendAdminInvitation";
 
 export default function InviteAdminPopUp() {
+  const [isLoading, setIsLoading] = useState(false)
   const [invite, setInvite] = useState({
     isLoading: false,
     error: false,
     errorMessage: '',
-    isDisabled: true
   })
-const {isLoading, error, errorMessage, isDisabled} = invite
   const { admin, role, username, displayInviteAdminPopUp } = useSelector(state => state.inviteAdmin)
   const dispatch = useDispatch()
 
   const handleCancel = () => {
     dispatch(hideInviteAdminPopUp())
     dispatch(setAdmin(''))
+    dispatch(setUsername(''))
   }
 
-  const handleCreate = () => {
-    dispatch(hideInviteAdminPopUp())
-    dispatch(showInviteAdminSuccess())
+  const handleCreate =  async () => {
+   setIsLoading(true)
+   const response = await sendAdminInvitation(admin, username, role)
+   if(response){
+        dispatch(hideInviteAdminPopUp())
+        dispatch(showInviteAdminSuccess())
+        setIsLoading(false)
+   }else{
+    setIsLoading(false)
+   }  
   }
 
   const handleSetAdmin = (event) => {
     dispatch(setAdmin(event.target.value))
   }
 
-  const handleRoleChange = (event) => {
-    dispatch(setRole(event.target.value))
+  const handleRoleChange = (role) => {
+    dispatch(setRole(role))
   }
 
   const handleUsernameChange = (event) => {
     dispatch(setUsername(event.target.value))
   }
 
-  useEffect(() => {
-    if(admin && role && username){
-      setInvite({...invite, isDisabled: false})
-    }else{
-      setInvite({...invite, isDisabled: true})
-    }
-  }, [admin, role, username])
+
 
 
   return (
@@ -71,11 +74,6 @@ const {isLoading, error, errorMessage, isDisabled} = invite
           value={admin}
           onChange={handleSetAdmin}
         />
-        <select className="modal-input md-white" value={role} onChange={handleRoleChange}>
-        <option value="" disabled>role</option>
-        <option value="volvo">Super Admin</option>
-         <option value="saab">Admin</option>
-        </select>
         <input
           className="modal-input md-white"
           type="text"
@@ -83,11 +81,13 @@ const {isLoading, error, errorMessage, isDisabled} = invite
           value={username}
           onChange={handleUsernameChange}
         />
+        <RoleSelect selectedData={role} data={['ADMIN', 'SUPER_ADMIN']} setData={handleRoleChange} />
+        
       </div>
 
       <div className="grid grid-cols-2 gap-2.5">
         <Button variant="danger" onClick={handleCancel}>Cancel</Button>
-        <Button onClick={handleCreate} disabled={isDisabled} className="cursor-pointer">
+        <Button onClick={handleCreate} disabled={!admin || !username} className="cursor-pointer">
         { isLoading ? (
               <Icon icon="line-md:loading-loop" className="text-xl" />
             ) : "Invite" }
