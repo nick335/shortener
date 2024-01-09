@@ -38,7 +38,7 @@ const UrlsHomeCard = () => {
   return (
    <div className="flex flex-col gap-5">
     {
-      dataElements > 0 ? dataElements : <h4>No url has been shortened</h4>
+      dataElements.length > 0 ? dataElements : <h4>No url has been shortened</h4>
     }
   </div> 
   )
