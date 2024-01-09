@@ -21,23 +21,24 @@ const UrlsHomeCard = () => {
 }, [data])
  if(isLoading) return <div className='flex justify-center mt-6'><Icon icon="line-md:loading-loop" className='text-5xl'/></div>
  if(error) return <h3>Error: Something went Wrong Refresh</h3>
+ const fetchedData = [...data]
+ const dataElements = fetchedData.sort((a, b) => {
+  if (a.name < b.name) {
+    return -1;
+  }
+  if (a.name > b.name) {
+    return 1;
+  }
+  return 0;
+})
+.slice(0, 3)
+.map(({...props}, index) => (
+  <UrlRow key={index} {...props} />
+))
   return (
    <div className="flex flex-col gap-5">
     {
-      [...data]
-      .sort((a, b) => {
-        if (a.name < b.name) {
-          return -1;
-        }
-        if (a.name > b.name) {
-          return 1;
-        }
-        return 0;
-      })
-      .slice(0, 3)
-      .map(({...props}, index) => (
-        <UrlRow key={index} {...props} />
-      ))
+      dataElements > 0 ? dataElements : <h4>No url has been shortened</h4>
     }
   </div> 
   )

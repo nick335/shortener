@@ -1,5 +1,6 @@
 import { getCookie } from 'cookies-next'
 import { redirect, } from 'next/navigation'
+import { toast } from 'react-toastify'
 import React from 'react'
 // import { useSelector } from 'react-redux'
 
@@ -12,7 +13,17 @@ const getAccessToken = async () => {
   return UserToken.accessToken
  }else {
     //since there is no refresh token endpoint lets redirect to the login page
-    return redirect('/')
+    // return redirect('/')
+    toast.error('session has timed out refresh to login', {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light"
+    })
   // refetch access token using refresh token
 //   try {
 //    const accessToken = await fetch('')
