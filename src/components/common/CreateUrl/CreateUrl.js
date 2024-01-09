@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   showCreateUrlPopUp,
   changeLongUrl
-} from "@/app/redux/features/createUrl/createUrlSlice";
-import { showInviteAdminPopUp } from "@/app/redux/features/inviteAdmin/inviteAdminSlice";
+} from "@/redux/features/createUrl/createUrlSlice";
+import { showInviteAdminPopUp } from "@/redux/features/inviteAdmin/inviteAdminSlice";
 
 import Button from "../Button/Button";
 import CreateUrlPopUp from "@/components/common/PopUpModal/modals/CreateUrlPopUp";
@@ -21,6 +21,7 @@ export default function CreateUrl() {
   const hideOnUrls = pathname === '/home/urls'
 
   const { longUrl } = useSelector(state => state.createUrl)
+  const role = useSelector(state => state.user.userDetails.role)
   const dispatch = useDispatch()
 
   const handleLongUrl = ({ target }) => {
@@ -29,7 +30,7 @@ export default function CreateUrl() {
 
 
   const handleDisplayCreatePopUp = () => {
-    dispatch(showCreateUrlPopUp())
+    dispatch(showCreateUrlPopUp('CREATE'))
   }
 
   const handleDisplayInviteAdminPopUp = () => {
@@ -73,14 +74,14 @@ export default function CreateUrl() {
           >
           Create new URL
         </Button>
-        <Button
+        { role === 'SUPER_ADMIN' && <Button
           variant="ruby"
           icon="people"
           hidden={hideOnUrls}
           onClick={handleDisplayInviteAdminPopUp}
         >
           Invite Admin
-        </Button>
+        </Button>}
       </div>
 
       <CreateUrlPopUp />

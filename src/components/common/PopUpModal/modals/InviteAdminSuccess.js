@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setAdmin,
   hideInviteAdminSuccess,
-} from "@/app/redux/features/inviteAdmin/inviteAdminSlice";
+  setUsername,
+} from "@/redux/features/inviteAdmin/inviteAdminSlice";
 
 import PopUpModal from "../PopUpModal";
 import { ArrowLeft2, ExportSquare } from "iconsax-react";
@@ -16,9 +17,11 @@ export default function InviteAdminSuccess() {
   const handleCancel = () => {
     dispatch(hideInviteAdminSuccess())
     dispatch(setAdmin(''))
+    dispatch(setUsername(''))
+
   }
   
-  const handleRedict = () => {
+  const handleRedirect = () => {
     dispatch(hideInviteAdminSuccess())
   }
 
@@ -38,7 +41,7 @@ export default function InviteAdminSuccess() {
           <span>Back</span>
         </button>
 
-        <Link onClick={handleRedict} href="/home/admins" className="flex gap-2 items-center justify-end text-third-blue link">
+        <Link onClick={handleRedirect} href="/home/admins" className="flex gap-2 items-center justify-end text-third-blue link">
           <span>Go to Admins</span>
           <ExportSquare size={15} />
         </Link>

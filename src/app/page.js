@@ -5,17 +5,19 @@ import { useRouter, useSearchParams } from "next/navigation"
 import { useEffect } from "react"
 import { useSelector } from "react-redux";
 
-import ForgotPassword from "@/app/auth/login/forgotPassword/page"
-import Login from "@/app/auth/login/page"
-import ResetPassword from "@/app/auth/login/forgotPassword/resetPassword/page"
+import ForgotPassword from "@/components/auth/login/forgotPassword/page"
+import LoginPage from "@/components/auth/login/page"
+import ResetPassword from "@/components/auth/login/forgotPassword/resetPassword/page"
 
 import Button from "@/components/common/Button/Button"
 import LandingNavigation from "@/components/layout/LandingNavigation/LandingNavigation"
 import LinkClipArt from "@/components/common/LinkClipArt/LinkClipArt"
 import windowImg from "@/icons/landing-window.svg"
+import { hasCookie } from "cookies-next"
+import LandingPageCheck from "@/components/auth/WithLandingPgeAuth"
+import { ToastContainer } from "react-toastify"
 
-
-export default function LandingPage() {
+ function LandingPage() {
   const searchParams = useSearchParams();
 
   const auth = searchParams.get('auth')
@@ -24,12 +26,6 @@ export default function LandingPage() {
   const showResetPasswordModal = auth === "resetpassword" ? true : false
   const router = useRouter()
   const isLoggedIn = useSelector(state => state.user.isLoggedIn)
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      router.push('/home')
-    }
-  })
 
 
   return (
@@ -58,10 +54,12 @@ export default function LandingPage() {
           <Button>Log In</Button>
         </Link>
 
-        {showLoginModal && <Login />}
+        {showLoginModal && <LoginPage />}
         {showForgotPasswordModal && <ForgotPassword />}
         {showResetPasswordModal && <ResetPassword />}
       </section>
     </main>
   )
 }
+
+export default LandingPageCheck(LandingPage)

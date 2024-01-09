@@ -1,36 +1,41 @@
-import BEARER_TOKEN from "./token";
+import getAccessToken from "./getAccessToken";
+import {toast } from 'react-toastify'
+import axios from "axios";
 
 export default async function shortenLink(label, url) {
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-  myHeaders.append("Authorization", `Bearer ${BEARER_TOKEN}`);
-  
-  var raw = JSON.stringify({
-    "name": label,
-    "originalUrl": url
-  });
-  
-  var requestOptions = {
-    method: 'POST',
-    headers: myHeaders,
-    body: raw,
-    redirect: 'follow'
-  };
-  
-  try {
-    const response = await fetch("https://ecxurls.com/api/v1/links/short-links", requestOptions);
+  const Token = await getAccessToken()
 
-    if (!response.ok) {
-      // If the response status is not in the 2xx range, handle the error
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
+  if(Token){
+   try {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${Token}`,
+      },
+    };
 
-    const result = await response.text();
-    // You can return a result here if needed
-    return result;
-  } catch (error) {
-    // Handle the error and possibly re-throw it
-    console.error('Error:', error);
-    throw error;
+    const response = await axios.post('https://ecxurls.com/api/v1/links/short-links', {
+      name: label,
+      originalUrl: url,
+    }, requestOptions);
+   
+    return {
+      success: true
+    };
+    } catch (error) {
+      const message = error.response ? error.response.data.error : 'something went wrong try again'
+       toast.error( message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    } 
   }
+  
 }

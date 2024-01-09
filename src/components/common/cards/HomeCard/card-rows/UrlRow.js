@@ -5,7 +5,7 @@ import { Copy, Link1 } from "iconsax-react"
 import useCopyToClipboard from "@/hooks/copyToClipboard";
 
 
-export default function UrlRow({ name, shortLink, href }) {
+export default function UrlRow({ name, shortUrl, href }) {
   const { copied, copyText } = useCopyToClipboard()
 
 
@@ -17,7 +17,7 @@ export default function UrlRow({ name, shortLink, href }) {
 
       <div className="text-small text-start grow flex flex-col h-full truncate w-max">
         <p className="truncate w-full">{name}</p>
-        <Link href={href} className="link w-fit text-dart truncate">{shortLink}</Link>
+        <Link href={shortUrl} className="link w-fit text-dart truncate">{shortUrl}</Link>
       </div>
 
       <div className="relative">

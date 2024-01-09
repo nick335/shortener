@@ -2,8 +2,8 @@
 import "./Header.css"
 import Link from "next/link";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { showInviteAdminPopUp } from "@/app/redux/features/inviteAdmin/inviteAdminSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { showInviteAdminPopUp } from "@/redux/features/inviteAdmin/inviteAdminSlice";
 import { ArrowLeft2, HambergerMenu, SearchNormal1, User } from "iconsax-react";
 
 import Button from "@/components/common/Button/Button";
@@ -19,6 +19,7 @@ import Searchbar from "./Menu/SearchMenu/Searchbar";
 
 export default function Header() {
   const dispatch = useDispatch()
+  const role = useSelector(state => state.user.userDetails.role) 
 
   const handleDisplayInviteAdmin = () => {
     dispatch(showInviteAdminPopUp())
@@ -87,7 +88,7 @@ export default function Header() {
             <User size="20" />
           </div>
 
-          <Link href="">
+          { role === 'SUPER_ADMIN' && <Link href="">
             <Button
               variant="ruby"
               icon="people"
@@ -96,7 +97,7 @@ export default function Header() {
             >
               Invite Admin
             </Button>
-          </Link>
+          </Link>}
         </div>
       </div>
 

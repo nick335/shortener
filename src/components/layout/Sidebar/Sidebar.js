@@ -1,13 +1,14 @@
 "use client"
 import SidebarLink from "./SidebarLink/SidebarLink";
+import { useSelector } from "react-redux";
 
 
 export default function Sidebar() {
+  const role = useSelector(state => state.user.userDetails.role)
   const sidebarLinks = [
     {name: 'Home', href: '/home'},
     {name: 'Dashboard', href: '/home/dashboard'},
     {name: 'URLs', href: '/home/urls'},
-    {name: 'Admins', href: '/home/admins'},
   ]
 
 
@@ -22,6 +23,7 @@ export default function Sidebar() {
             >{name}</SidebarLink>
           ))
         }
+        { role === 'SUPER_ADMIN' && <SidebarLink key={'/home/admins'} href="/home/admins" >Admins</SidebarLink>}
       </div>
 
       <hr className="border-[#E1E1E1] mt-2.5 mb-2" />

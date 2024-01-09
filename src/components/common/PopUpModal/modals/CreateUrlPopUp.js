@@ -4,34 +4,58 @@ import {
   changeLongUrl,
   changeLabel,
   showCreateUrlSuccess
-} from "@/app/redux/features/createUrl/createUrlSlice"
-
+} from "@/redux/features/createUrl/createUrlSlice"
 import { ClipboardExport, Link1 } from "iconsax-react";
 import Button from "../../Button/Button";
 import PopUpModal from "../PopUpModal";
 import shortenLink from "@/api/shortenLink";
+import { useState } from "react";
+import { Icon } from "@iconify/react";
+import editLink from "@/api/editLink";
 
 export default function CreateUrlPopUp() {
-  const { isDisplayCreatePopUp, longUrl, label } = useSelector(state => state.createUrl)
+  const { isDisplayCreatePopUp, longUrl, label, editId, Action } = useSelector(state => state.createUrl)
   const dispatch = useDispatch()
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleCancel = () => {
+    setIsLoading(false)
     dispatch(hideCreateUrlPopUp())
     dispatch(changeLongUrl(''))
     dispatch(changeLabel(''))
   }
 
   const handleCreate = async () => {
-    try {
-      await shortenLink(label, longUrl); // Wait for the fetch to complete
+    setIsLoading(true)
+    const response = await shortenLink(label, longUrl)
+    if(response){
       dispatch(hideCreateUrlPopUp());
       dispatch(showCreateUrlSuccess());
-    } catch (error) {
-      // Handle the error here if the fetch request fails
-      console.error('Error:', error);
+      setIsLoading(false)
+    }else{
+      setIsLoading(false)
+    }
+  }
+  const handleEdit = async () => {
+    setIsLoading(true)
+    const response = await editLink(editId, label, longUrl)
+    if(response){
+      dispatch(hideCreateUrlPopUp());
+      dispatch(showCreateUrlSuccess());
+      setIsLoading(false)
+    }else{
+      setIsLoading(false)
     }
   }
 
+  const handleClick = () => {
+    if(Action === 'CREATE'){
+      handleCreate()
+    }
+    if(Action === 'EDIT'){
+      handleEdit()
+    }
+  }
   const handleChangeLongUrl = ({ target }) => {
     dispatch(changeLongUrl(target.value))
   }
@@ -85,7 +109,11 @@ export default function CreateUrlPopUp() {
 
         <div className="grid grid-cols-2 gap-2.5">
           <Button variant="danger" onClick={handleCancel}>Cancel</Button>
-          <Button onClick={handleCreate} disabled={!longUrl || !label}>Create</Button>
+          <Button className=" !capitalize " onClick={handleClick} disabled={!longUrl || !label}>
+            { isLoading ? (
+              <Icon icon="line-md:loading-loop" className="text-xl" />
+            ) :  Action }
+          </Button>
         </div>
       </div>
     </PopUpModal>

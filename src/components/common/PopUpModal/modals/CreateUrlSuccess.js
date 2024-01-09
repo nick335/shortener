@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { changeLabel, changeLongUrl, hideCreateUrlSuccess } from "@/app/redux/features/createUrl/createUrlSlice";
+import { changeLabel, changeLongUrl, hideCreateUrlSuccess } from "@/redux/features/createUrl/createUrlSlice";
 
 import { ArrowLeft2, Copy, ExportSquare, } from "iconsax-react";
 import PopUpModal from "../PopUpModal";

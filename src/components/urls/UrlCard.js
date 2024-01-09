@@ -43,7 +43,10 @@ export default function UrlCard({ data }) {
           <URLOptions 
             isOpen={modals.options}
             id={data.id}
+            name={data.name}
+            originalURL={data.originalUrl}
             link={data.shortUrl}
+            close={toggleModals}
           />
         </div>
       </div>

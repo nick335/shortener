@@ -6,8 +6,8 @@ import Button from "@/components/common/Button/Button"
 import Modal from "@/components/layout/Modal/Modal";
 import { useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
-import login from "@/api/login";
-
+import { userLogin } from "@/api/login";
+import { setCookie } from "cookies-next";
 
 export default function LoginPage(){
   const [user, setUser] = useState({
@@ -29,25 +29,49 @@ export default function LoginPage(){
     setUser({...user, [name]: value})
   }
 
-  async function handleLoginData(response) {
-    setUser({...user, loading: true})
-    await response
+  // async function handleLoginData(response) {
+  //   setUser({...user, loading: true})
+  //   await response
     
-    if (response) {
-      const { message, status } = response
+  //   if (response) {
+  //     const { message, status } = response
       
-      if (status && status === false) {
-        setUser({...user, error:true, errorMessage: 'Invalid username or password'})
+  //     if (status && status === false) {
+  //       setUser({...user, error:true, errorMessage: 'Invalid username or password'})
+  //     }
+  //     if (message && message === "Login successful.") {
+  //       console.log(message)
+  //       router.push('/home')
+  //     }
+  //     console.log(response)
+  //     console.log(JSON.stringify(response))
+  //   }
+  // }
+  const handleLogin = async () => {
+    setUser({...user, loading: true})
+    const response = await userLogin(username, password)
+    if(response && response.success){
+      console.log(response.role)
+      const token = {
+        name: response.name,
+        accessToken: response.accessToken,
+        accessTokenExpiration: response.accessTokenExpiration,
+        refreshToken: response.refreshToken,
+        refreshTokenExpiration: response.refreshTokenExpiration,
+        role:response.role,
       }
-      if (message && message === "Login successful.") {
-        console.log(message)
-        router.push('/home')
-      }
+      setCookie('userToken', token, {
+        maxAge: response.accessTokenExpiration,
+        path: '/',
+        secure: true
+      })
+      setUser({...user, loading: false})
+      router.push("/home")
+    }else{
+      setUser({...user, loading:false, error: true, errorMessage: response.error })
       console.log(response)
-      console.log(JSON.stringify(response))
     }
   }
-
 
   useEffect(() => {
     if (username && password) {
@@ -57,12 +81,6 @@ export default function LoginPage(){
     }
   }, [password])
   
-
-  async function handleLogin() {
-    login(username, password, handleLoginData)
-  }
-  
-
   return (
     <Modal title="Login to your account">
       <div className="flex flex-col gap-8">

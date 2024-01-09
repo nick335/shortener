@@ -15,7 +15,7 @@ const initialState = [
   },
   {
     name: 'Admin 4',
-    dateJoined: new Date('2023-90-25T20:00:00.00Z')
+    dateJoined: new Date('2023-09-25T20:00:00.00Z')
   },
   {
     name: 'Admin 5',
