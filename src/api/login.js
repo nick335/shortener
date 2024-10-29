@@ -23,7 +23,6 @@ export const userLogin = async (username, password) => {
         role: user.role
       }; 
     } 
-    // no need for the else if and else statement, catch handles errors that occur during the API request or if an error response is received.
      }catch(error){
         console.log(error)
         return { 
