@@ -15,7 +15,7 @@ export default async function editLink(id, label, url){
     },
    }
 
-   const response = await axios.put(`https://ecxurls.com/api/v1/links/short-links/${id}`, {
+   const response = await axios.put(`https://ecx-url-shortener.azurewebsites.net/api/v1/links/short-links/${id}`, {
     name: label,
     originalUrl: url,
    }, requestOptions)

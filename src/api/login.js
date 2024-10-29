@@ -3,7 +3,7 @@ import axios from "axios"
 
 export const userLogin = async (username, password) => {
     try{
-        const response = await axios.post("https://ecx-shortener-api-0ab392f6811d.herokuapp.com/api/v1/auth/login", {
+        const response = await axios.post("https://ecx-url-shortener.azurewebsites.net/api/v1/auth/login", {
          username,
          password
     })

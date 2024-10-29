@@ -15,7 +15,7 @@ export default async function sendAdminInvitation(email, username, as){
     },
    }
 
-   const response = await axios.post('https://ecxurls.com/api/v1/users/invites',{
+   const response = await axios.post('https://ecx-url-shortener.azurewebsites.net/api/v1/users/invites',{
     email: email,
     username: username,
     as: as,

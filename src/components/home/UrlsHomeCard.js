@@ -11,7 +11,7 @@ import { useEffect } from 'react'
 const UrlsHomeCard = () => {
  const dispatch = useDispatch()
  const { AllLinks } = useSelector((state) => state.urls)
- const { data, error, isLoading } = useSWR('https://ecx-shortener-api-0ab392f6811d.herokuapp.com/api/v1/links/short-links', fetcher)
+ const { data, error, isLoading } = useSWR('https://ecx-url-shortener.azurewebsites.net/api/v1/links/short-links', fetcher)
 
  useEffect(() => {
 

@@ -10,7 +10,7 @@ export function getAllLinks(functional) {
     redirect: 'follow'
   };
   
-  fetch("https://ecxurls.com/api/v1/links/short-links", requestOptions)
+  fetch("https://ecx-url-shortener.azurewebsites.net/api/v1/links/short-links", requestOptions)
     .then(response => response.text())
     .then(result => JSON.parse(result))
     .then(result => functional(result))

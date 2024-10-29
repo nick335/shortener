@@ -15,7 +15,7 @@ export default async function shortenLink(label, url) {
       },
     };
 
-    const response = await axios.post('https://ecxurls.com/api/v1/links/short-links', {
+    const response = await axios.post('https://ecx-url-shortener.azurewebsites.net/api/v1/links/short-links', {
       name: label,
       originalUrl: url,
     }, requestOptions);
