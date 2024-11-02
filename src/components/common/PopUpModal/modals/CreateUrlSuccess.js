@@ -34,7 +34,7 @@ export default function CreateUrlSuccess() {
 
         <div className="md-white bg-ecx-grey/10 rounded-[5px] px-2.5 py-1.5 flex gap-2">
           <span className="grow truncate link link-dart">
-            ecxurls.com/{label}
+            ecxshort.xyz/{label}
           </span>
 
           <div className="relative">
@@ -42,7 +42,7 @@ export default function CreateUrlSuccess() {
               copied ? (
                 <Copied  visible={copied} className="!-top-1.5"  />
               ) : (
-                <Copy size={17} className="-scale-x-[1] cursor-pointer" onClick={() => copyText(`ecxurls.com/${label}`)} />
+                <Copy size={17} className="-scale-x-[1] cursor-pointer" onClick={() => copyText(`ecxshort.xyz/${label}`)} />
               )
             }
           </div>
